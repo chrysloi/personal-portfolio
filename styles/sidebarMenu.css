@@ -1,0 +1,98 @@
+.responsive-sidebar-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+}
+.responsive-sidebar-menu.active {
+  opacity: 1;
+  visibility: visible;
+}
+.global-color .inner .overlay,
+.responsive-sidebar-menu .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: #565656;
+  opacity: 0.5;
+}
+.responsive-sidebar-menu .sidebar-menu-inner {
+  max-width: 345px;
+  width: 100%;
+  margin-left: auto;
+  background: #191919;
+  height: 100%;
+  overflow-x: hidden;
+  padding-top: 50px;
+  margin-right: -250px;
+  transition: 0.3s;
+}
+.responsive-sidebar-menu.active .sidebar-menu-inner {
+  margin-right: 0;
+}
+.responsive-sidebar-menu .sidebar-menu-inner .menu-wrap {
+  width: 46%;
+  margin: auto;
+}
+.responsive-sidebar-menu .sidebar-menu-inner .menu-wrap p {
+  font-size: 18px;
+}
+.responsive-sidebar-menu .sidebar-menu-inner .menu-wrap .dmenu {
+  position: relative;
+  right: auto;
+  left: 0;
+  top: 0;
+  transform: translateY(0);
+  background: none;
+  border-radius: 0;
+  border: none;
+  margin-bottom: 30px;
+}
+.responsive-sidebar-menu .sidebar-menu-inner .menu-wrap .dmenu li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.responsive-sidebar-menu .sidebar-menu-inner .menu-wrap .dmenu li a:hover span {
+  color: #fff;
+}
+.responsive-sidebar-menu .sidebar-menu-inner .menu-wrap .dmenu li a i {
+  margin-bottom: 2px;
+}
+.responsive-sidebar-menu .sidebar-menu-inner .menu-wrap .dmenu li a span {
+  position: relative;
+  right: 0;
+  opacity: 1;
+  visibility: visible;
+  color: #999999;
+  background: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+.responsive-sidebar-menu
+  .sidebar-menu-inner
+  .menu-wrap
+  .dmenu
+  li
+  a
+  span::before {
+  display: none;
+}
+.responsive-sidebar-menu
+  .sidebar-menu-inner
+  .menu-wrap
+  .dmenu
+  li
+  a.active
+  span {
+  color: #fff;
+}
