@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eloi Chrysanthe</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <!-- <div class="page-loader">
+      <div class="bounceball"></div>
+    </div> -->
+    <div class="left-sidebar">
+      <div class="left-sidebar-header">
+        <img
+          src="./assets/images/Logo.svg"
+          alt="Logo"
+          height="36"
+          width="128"
+        />
+        <span class="designation">Software Engineer & developer</span>
+      </div>
+      <img src="./assets/images/1642048213572.jpg" alt="Me" class="me" />
+      <h3 class="email">eloi.chrysanthe@gmail.com</h3>
+      <h3 class="address">Based in Kigali, Rwanda</h3>
+      <p class="copyright">© 2024 Eloi. All Rights reserved</p>
+      <ul class="social-profile">
+        <li>
+          <a href="#"><img src="./assets/icons/insta.svg" alt="instagram" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="./assets/icons/X.svg" alt="X.com" /></a>
+        </li>
+        <li>
+          <a href="#"
+            ><img src="./assets/icons/linkendin.svg" alt="Linkedin"
+          /></a>
+        </li>
+        <li>
+          <a href="#"><img src="./assets/icons/github.svg" alt="github" /></a>
+        </li>
+      </ul>
+      <a href="#contact" onclick="changeTo('contact')" class="theme-btn">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M4 11L20 21L36 11" stroke="#1F1F1F" stroke-width="1.5" />
+          <rect
+            x="4"
+            y="11"
+            width="32"
+            height="18"
+            stroke="#1F1F1F"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+        Hire me
+      </a>
+    </div>
+    <ul class="dmenu">
+      <li>
+        <a href="#home" onclick="changeTo('home')" class="scroll-to">
+          <span>Home</span>
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18.75 30C18.75 30.3315 18.8817 30.6495 19.1161 30.8839C19.3505 31.1183 19.6685 31.25 20 31.25C20.3315 31.25 20.6495 31.1183 20.8839 30.8839C21.1183 30.6495 21.25 30.3315 21.25 30V25C21.25 24.6685 21.1183 24.3505 20.8839 24.1161C20.6495 23.8817 20.3315 23.75 20 23.75C19.6685 23.75 19.3505 23.8817 19.1161 24.1161C18.8817 24.3505 18.75 24.6685 18.75 25V30Z"
+              fill="#909090"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M20 2.08333C18.82 2.08333 17.7484 2.42166 16.5834 2.98666C15.46 3.53333 14.16 4.33999 12.5384 5.34666L9.09337 7.48499C7.56004 8.43833 6.32837 9.20166 5.38171 9.92666C4.40004 10.6767 3.64671 11.4433 3.10171 12.4383C2.55837 13.43 2.31504 14.4867 2.19671 15.735C2.08337 16.9433 2.08337 18.4233 2.08337 20.2783V22.9667C2.08337 26.14 2.08337 28.645 2.33837 30.6033C2.59837 32.6117 3.14837 34.2333 4.38837 35.515C5.63337 36.8033 7.21671 37.38 9.18004 37.6517C11.08 37.9167 13.51 37.9167 16.57 37.9167H23.43C26.49 37.9167 28.92 37.9167 30.82 37.6517C32.7817 37.38 34.3667 36.8033 35.6134 35.515C36.8517 34.2333 37.4017 32.6117 37.6634 30.6033C37.9167 28.645 37.9167 26.14 37.9167 22.9667V20.2783C37.9167 18.4233 37.9167 16.945 37.8034 15.735C37.6867 14.485 37.4417 13.43 36.8984 12.4383C36.3534 11.4433 35.5984 10.6783 34.6184 9.92666C33.6717 9.19999 32.4417 8.43833 30.9067 7.48499L27.4617 5.34666C25.84 4.33999 24.54 3.53333 23.415 2.98666C22.2534 2.41999 21.1817 2.08333 20 2.08333ZM13.8 7.50666C15.4917 6.45666 16.6834 5.71999 17.6784 5.23499C18.6467 4.76333 19.3334 4.58333 20 4.58333C20.6667 4.58333 21.3534 4.76333 22.3217 5.23499C23.3184 5.71833 24.5084 6.45666 26.2 7.50666L29.5334 9.57499C31.135 10.57 32.26 11.2683 33.1 11.9117C33.915 12.5367 34.3834 13.0517 34.705 13.6383C35.0267 14.2267 35.215 14.915 35.3134 15.9683C35.415 17.0483 35.4167 18.41 35.4167 20.34V22.875C35.4167 26.1583 35.4134 28.5017 35.1834 30.28C34.9567 32.0267 34.5284 33.04 33.8167 33.7783C33.1084 34.51 32.145 34.945 30.4767 35.1767C28.7667 35.4133 26.5117 35.4167 23.3334 35.4167H16.6667C13.4867 35.4167 11.2334 35.4133 9.52337 35.1767C7.85504 34.9433 6.89171 34.51 6.18504 33.7767C5.47171 33.04 5.04337 32.0267 4.81837 30.28C4.58504 28.5017 4.58337 26.16 4.58337 22.875V20.34C4.58337 18.41 4.58337 17.0483 4.68671 15.9683C4.78504 14.915 4.97337 14.2267 5.29504 13.6383C5.61671 13.0517 6.08504 12.5367 6.90171 11.9117C7.74004 11.2683 8.86504 10.57 10.4667 9.57499L13.8 7.50666Z"
+              fill="#909090"
+            />
+          </svg>
+          <!-- <img src="./assets/icons/home.svg" alt="home" /> -->
+        </a>
+      </li>
+      <li>
+        <a href="#about" onclick="changeTo('about')" class="scroll-to">
+          <span>About</span>
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20 20C24.6023 20 28.3333 16.269 28.3333 11.6667C28.3333 7.0643 24.6023 3.33334 20 3.33334C15.3976 3.33334 11.6666 7.0643 11.6666 11.6667C11.6666 16.269 15.3976 20 20 20Z"
+              stroke="#909090"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M28.3334 23.3333H28.92C30.1385 23.3337 31.3149 23.7789 32.2282 24.5855C33.1415 25.392 33.7289 26.5043 33.88 27.7133L34.5317 32.92C34.5903 33.3891 34.5485 33.8652 34.409 34.3169C34.2695 34.7685 34.0356 35.1853 33.7227 35.5397C33.4099 35.894 33.0252 36.1777 32.5943 36.372C32.1634 36.5663 31.6961 36.6668 31.2234 36.6667H8.77669C8.30399 36.6668 7.83668 36.5663 7.40576 36.372C6.97485 36.1777 6.59019 35.894 6.27731 35.5397C5.96444 35.1853 5.7305 34.7685 5.59103 34.3169C5.45156 33.8652 5.40974 33.3891 5.46835 32.92L6.11835 27.7133C6.26951 26.5037 6.85738 25.391 7.77141 24.5844C8.68543 23.7778 9.86265 23.3329 11.0817 23.3333H11.6667"
+              stroke="#909090"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <!-- <img src="./assets//icons/about.svg" alt="About" /> -->
+        </a>
+      </li>
+      <li>
+        <a href="#resume" onclick="changeTo('resume')" class="scroll-to">
+          <span>Resume</span>
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.875 17.5C16.875 17.3342 16.9408 17.1753 17.0581 17.0581C17.1753 16.9408 17.3342 16.875 17.5 16.875H22.5C22.6658 16.875 22.8247 16.9408 22.9419 17.0581C23.0592 17.1753 23.125 17.3342 23.125 17.5C23.125 17.6658 23.0592 17.8247 22.9419 17.9419C22.8247 18.0592 22.6658 18.125 22.5 18.125H17.5C17.3342 18.125 17.1753 18.0592 17.0581 17.9419C16.9408 17.8247 16.875 17.6658 16.875 17.5ZM35.625 11.25V31.25C35.625 31.7473 35.4275 32.2242 35.0758 32.5758C34.7242 32.9275 34.2473 33.125 33.75 33.125H6.25C5.75272 33.125 5.27581 32.9275 4.92417 32.5758C4.57254 32.2242 4.375 31.7473 4.375 31.25V11.25C4.375 10.7527 4.57254 10.2758 4.92417 9.92417C5.27581 9.57254 5.75272 9.375 6.25 9.375H13.125V7.5C13.125 6.6712 13.4542 5.87634 14.0403 5.29029C14.6263 4.70424 15.4212 4.375 16.25 4.375H23.75C24.5788 4.375 25.3737 4.70424 25.9597 5.29029C26.5458 5.87634 26.875 6.6712 26.875 7.5V9.375H33.75C34.2473 9.375 34.7242 9.57254 35.0758 9.92417C35.4275 10.2758 35.625 10.7527 35.625 11.25ZM14.375 9.375H25.625V7.5C25.625 7.00272 25.4275 6.52581 25.0758 6.17417C24.7242 5.82254 24.2473 5.625 23.75 5.625H16.25C15.7527 5.625 15.2758 5.82254 14.9242 6.17417C14.5725 6.52581 14.375 7.00272 14.375 7.5V9.375ZM5.625 11.25V18.125C10.0162 20.586 14.9662 21.8773 20 21.875C25.0338 21.8773 29.9838 20.586 34.375 18.125V11.25C34.375 11.0842 34.3092 10.9253 34.1919 10.8081C34.0747 10.6908 33.9158 10.625 33.75 10.625H6.25C6.08424 10.625 5.92527 10.6908 5.80806 10.8081C5.69085 10.9253 5.625 11.0842 5.625 11.25ZM34.375 31.25V19.5469C29.9482 21.8976 25.0122 23.1262 20 23.125C14.9877 23.1266 10.0517 21.898 5.625 19.5469V31.25C5.625 31.4158 5.69085 31.5747 5.80806 31.6919C5.92527 31.8092 6.08424 31.875 6.25 31.875H33.75C33.9158 31.875 34.0747 31.8092 34.1919 31.6919C34.3092 31.5747 34.375 31.4158 34.375 31.25Z"
+              fill="#909090"
+            />
+          </svg>
+          <!-- <img src="./assets/icons/resume.svg" alt="Resume" /> -->
+        </a>
+      </li>
+      <li>
+        <a href="#skills" onclick="changeTo('skills')" class="scroll-to">
+          <span>Skills</span>
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="21.525"
+              y="21.525"
+              width="15.1342"
+              height="15.1342"
+              stroke="#909090"
+              stroke-width="1.68158"
+              stroke-linecap="round"
+            />
+            <rect
+              x="2.84079"
+              y="21.525"
+              width="15.1342"
+              height="15.1342"
+              rx="7.5671"
+              stroke="#909090"
+              stroke-width="1.68158"
+              stroke-linecap="round"
+            />
+            <path
+              d="M35.7995 17.7648H22.3847L29.0921 4.35008L35.7995 17.7648Z"
+              stroke="#909090"
+              stroke-width="2.10197"
+              stroke-linecap="round"
+            />
+          </svg>
+          <!-- <img src="./assets/icons/skills.svg" alt="Skills" /> -->
+        </a>
+      </li>
+      <li>
+        <a href="#portfolio" onclick="changeTo('portfolio')" class="scroll-to">
+          <span>Portfolio</span>
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="8"
+              y="2"
+              width="10"
+              height="10"
+              stroke="#909090"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <rect
+              x="21"
+              y="2"
+              width="10"
+              height="10"
+              stroke="#909090"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <rect
+              x="8"
+              y="15"
+              width="10"
+              height="10"
+              stroke="#909090"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <rect
+              x="21"
+              y="15"
+              width="10"
+              height="10"
+              stroke="#909090"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <rect
+              x="8"
+              y="28"
+              width="10"
+              height="10"
+              stroke="#909090"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <rect
+              x="21"
+              y="28"
+              width="10"
+              height="10"
+              stroke="#909090"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <!-- <img src="./assets/icons/portfolio.svg" alt="Portfolio" /> -->
+        </a>
+      </li>
+      <li>
+        <a
+          href="#testimonial"
+          onclick="changeTo('testimonial')"
+          class="scroll-to"
+        >
+          <span>Testimonial</span>
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.66663 20C6.66663 16.4638 8.07138 13.0724 10.5719 10.5719C13.0724 8.07142 16.4637 6.66666 20 6.66666C23.5362 6.66666 26.9276 8.07142 29.428 10.5719C31.9285 13.0724 33.3333 16.4638 33.3333 20V28.4833C33.3333 29.8967 33.3333 30.6 33.1233 31.165C32.9563 31.6127 32.695 32.0193 32.3571 32.3572C32.0193 32.6951 31.6127 32.9563 31.165 33.1233C30.6 33.3333 29.895 33.3333 28.4833 33.3333H20C16.4637 33.3333 13.0724 31.9286 10.5719 29.4281C8.07138 26.9276 6.66663 23.5362 6.66663 20Z"
+              stroke="#909090"
+              stroke-width="1.66667"
+              stroke-linecap="round"
+            />
+            <path
+              d="M15 18.3333H25M20 25H25"
+              stroke="#909090"
+              stroke-width="1.66667"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <!-- <img src="./assets/icons/testimonial.svg" alt="Testimonial" /> -->
+        </a>
+      </li>
+      <li>
+        <a href="#contact" onclick="changeTo('contact')" class="scroll-to">
+          <span>Contact</span>
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M4 10L20 20L36 10" stroke="#909090" stroke-width="1.5" />
+            <rect
+              x="4"
+              y="10"
+              width="32"
+              height="18"
+              stroke="#909090"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <!-- <img src="./assets/icons/contact.svg" alt="Contact" /> -->
+        </a>
+      </li>
+    </ul>
+    <div class="responsive-sidebar-menu">
+      <div class="overlay"></div>
+      <div class="sidebar-menu-inner">
+        <div class="menu-wrap">
+          <p>Menu</p>
+          <ul class="dmenu scroll-nav-responsive d-flex">
+            <li>
+              <a
+                class="scroll-to active"
+                href="#home"
+                onclick="changeTo('home')"
+              >
+                <img src="./assets/icons/home.svg" alt="" /> <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a class="scroll-to" href="#about" onclick="changeTo('about')">
+                <img src="./assets/icons/about.svg" alt="" /> <span>About</span>
+              </a>
+            </li>
+            <li>
+              <a class="scroll-to" href="#resume" onclick="changeTo('resume')">
+                <img src="./assets/icons/resume.svg" alt="" />
+                <span>Resume</span>
+              </a>
+            </li>
+            <li>
+              <a class="scroll-to" href="#skills" onclick="changeTo('skills')">
+                <img src="./assets/icons/skills.svg" alt="" />
+                <span>Skills</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="scroll-to"
+                href="#portfolio"
+                onclick="changeTo('portfolio')"
+              >
+                <img src="./assets/icons/portfolio.svg" alt="" />
+                <span>Portfolio</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="scroll-to"
+                href="#testimonial"
+                onclick="changeTo('testimonial')"
+              >
+                <img src="./assets/icons/testimonial.svg" alt="" />
+                <span>Testimonial</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="scroll-to"
+                href="#contact"
+                onclick="changeTo('contact')"
+              >
+                <img src="./assets/icons/contact.svg" alt="" />
+                <span>Contact</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <span class="mode">
+      <svg
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.625 13.2812C15.625 10.291 16.0654 7.26465 17.1875 4.6875C9.72363 7.93652 4.6875 15.5586 4.6875 24.2188C4.6875 35.8682 14.1318 45.3125 25.7812 45.3125C34.4414 45.3125 42.0635 40.2764 45.3125 32.8125C42.7354 33.9346 39.709 34.375 36.7188 34.375C25.0693 34.375 15.625 24.9307 15.625 13.2812Z"
+          stroke="#909090"
+          stroke-width="3.125"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+    <span class="icon-menu"> <span></span><span></span> </span>
+    <main>
+      <div class="left-sidebar">
+        <div class="left-sidebar-header">
+          <img
+            src="./assets/images/Logo.svg"
+            alt="Logo"
+            height="36"
+            width="128"
+          />
+          <span class="designation">Software Engineer & developer</span>
+        </div>
+        <img src="./assets/images/1642048213572.jpg" alt="Me" class="me" />
+        <h3 class="email">eloi.chrysanthe@gmail.com</h3>
+        <h3 class="address">Based in Kigali, Rwanda</h3>
+        <p class="copyright">© 2024 Eloi. All Rights reserved</p>
+        <ul class="social-profile">
+          <li>
+            <a href="#"
+              ><img src="./assets/icons/insta.svg" alt="instagram"
+            /></a>
+          </li>
+          <li>
+            <a href="#"><img src="./assets/icons/X.svg" alt="X.com" /></a>
+          </li>
+          <li>
+            <a href="#"
+              ><img src="./assets/icons/linkendin.svg" alt="Linkedin"
+            /></a>
+          </li>
+          <li>
+            <a href="#"><img src="./assets/icons/github.svg" alt="github" /></a>
+          </li>
+        </ul>
+        <a onclick="changeTo('contact')" class="theme-btn">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M4 11L20 21L36 11" stroke="#1F1F1F" stroke-width="1.5" />
+            <rect
+              x="4"
+              y="11"
+              width="32"
+              height="18"
+              stroke="#1F1F1F"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          Hire me
+        </a>
+      </div>
+      <div class="content-area">
+        <section class="hero-section" id="home">
+          <div class="custom-container">
+            <div class="hero-content content-width">
+              <div class="section-header">
+                <h4
+                  class="subtitle scroll-animation"
+                  data-animation="fade_from_bottom"
+                >
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18.75 30C18.75 30.3315 18.8817 30.6495 19.1161 30.8839C19.3505 31.1183 19.6685 31.25 20 31.25C20.3315 31.25 20.6495 31.1183 20.8839 30.8839C21.1183 30.6495 21.25 30.3315 21.25 30V25C21.25 24.6685 21.1183 24.3505 20.8839 24.1161C20.6495 23.8817 20.3315 23.75 20 23.75C19.6685 23.75 19.3505 23.8817 19.1161 24.1161C18.8817 24.3505 18.75 24.6685 18.75 25V30Z"
+                      fill="#909090"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M20 2.08333C18.82 2.08333 17.7484 2.42166 16.5834 2.98666C15.46 3.53333 14.16 4.33999 12.5384 5.34666L9.09337 7.48499C7.56004 8.43833 6.32837 9.20166 5.38171 9.92666C4.40004 10.6767 3.64671 11.4433 3.10171 12.4383C2.55837 13.43 2.31504 14.4867 2.19671 15.735C2.08337 16.9433 2.08337 18.4233 2.08337 20.2783V22.9667C2.08337 26.14 2.08337 28.645 2.33837 30.6033C2.59837 32.6117 3.14837 34.2333 4.38837 35.515C5.63337 36.8033 7.21671 37.38 9.18004 37.6517C11.08 37.9167 13.51 37.9167 16.57 37.9167H23.43C26.49 37.9167 28.92 37.9167 30.82 37.6517C32.7817 37.38 34.3667 36.8033 35.6134 35.515C36.8517 34.2333 37.4017 32.6117 37.6634 30.6033C37.9167 28.645 37.9167 26.14 37.9167 22.9667V20.2783C37.9167 18.4233 37.9167 16.945 37.8034 15.735C37.6867 14.485 37.4417 13.43 36.8984 12.4383C36.3534 11.4433 35.5984 10.6783 34.6184 9.92666C33.6717 9.19999 32.4417 8.43833 30.9067 7.48499L27.4617 5.34666C25.84 4.33999 24.54 3.53333 23.415 2.98666C22.2534 2.41999 21.1817 2.08333 20 2.08333ZM13.8 7.50666C15.4917 6.45666 16.6834 5.71999 17.6784 5.23499C18.6467 4.76333 19.3334 4.58333 20 4.58333C20.6667 4.58333 21.3534 4.76333 22.3217 5.23499C23.3184 5.71833 24.5084 6.45666 26.2 7.50666L29.5334 9.57499C31.135 10.57 32.26 11.2683 33.1 11.9117C33.915 12.5367 34.3834 13.0517 34.705 13.6383C35.0267 14.2267 35.215 14.915 35.3134 15.9683C35.415 17.0483 35.4167 18.41 35.4167 20.34V22.875C35.4167 26.1583 35.4134 28.5017 35.1834 30.28C34.9567 32.0267 34.5284 33.04 33.8167 33.7783C33.1084 34.51 32.145 34.945 30.4767 35.1767C28.7667 35.4133 26.5117 35.4167 23.3334 35.4167H16.6667C13.4867 35.4167 11.2334 35.4133 9.52337 35.1767C7.85504 34.9433 6.89171 34.51 6.18504 33.7767C5.47171 33.04 5.04337 32.0267 4.81837 30.28C4.58504 28.5017 4.58337 26.16 4.58337 22.875V20.34C4.58337 18.41 4.58337 17.0483 4.68671 15.9683C4.78504 14.915 4.97337 14.2267 5.29504 13.6383C5.61671 13.0517 6.08504 12.5367 6.90171 11.9117C7.74004 11.2683 8.86504 10.57 10.4667 9.57499L13.8 7.50666Z"
+                      fill="#909090"
+                    />
+                  </svg>
+                  <!-- <img src="./assets/icons/home.svg" alt="" /> -->
+                  INTRODUCE
+                </h4>
+                <h1 class="scroll-animation" data-animation="fade_from_bottom">
+                  Say Hi from <span>Chrysanthe</span>
+                  , Software Engineer and Developer
+                </h1>
+              </div>
+              <p class="scroll-animation" data-animation="fade_from_bottom">
+                I design and code beautifully simple things and i love what i
+                do. Just simple like that!
+              </p>
+              <div class="facts d-flex">
+                <div
+                  class="left scroll-animation"
+                  data-animation="fade_from_left"
+                >
+                  <h2>1+</h2>
+                  <p>Years of <br />Experience</p>
+                </div>
+                <div
+                  class="right scroll-animation"
+                  data-animation="fade_from_right"
+                >
+                  <h2>18+</h2>
+                  <p>Completed<br />Projects</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="about-area" id="about">
+          <div class="custom-container">
+            <div class="about-content content-width">
+              <div class="section-header">
+                <h4
+                  class="subtitle scroll-animation"
+                  data-animation="fade_from_bottom"
+                >
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M20 20C24.6023 20 28.3333 16.269 28.3333 11.6667C28.3333 7.0643 24.6023 3.33334 20 3.33334C15.3976 3.33334 11.6666 7.0643 11.6666 11.6667C11.6666 16.269 15.3976 20 20 20Z"
+                      stroke="#909090"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M28.3334 23.3333H28.92C30.1385 23.3337 31.3149 23.7789 32.2282 24.5855C33.1415 25.392 33.7289 26.5043 33.88 27.7133L34.5317 32.92C34.5903 33.3891 34.5485 33.8652 34.409 34.3169C34.2695 34.7685 34.0356 35.1853 33.7227 35.5397C33.4099 35.894 33.0252 36.1777 32.5943 36.372C32.1634 36.5663 31.6961 36.6668 31.2234 36.6667H8.77669C8.30399 36.6668 7.83668 36.5663 7.40576 36.372C6.97485 36.1777 6.59019 35.894 6.27731 35.5397C5.96444 35.1853 5.7305 34.7685 5.59103 34.3169C5.45156 33.8652 5.40974 33.3891 5.46835 32.92L6.11835 27.7133C6.26951 26.5037 6.85738 25.391 7.77141 24.5844C8.68543 23.7778 9.86265 23.3329 11.0817 23.3333H11.6667"
+                      stroke="#909090"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <!-- <img src="./assets/icons/about.svg" alt="" /> -->
+                  About
+                </h4>
+                <h2 class="scroll-animation" data-animation="fade_from_bottom">
+                  Every great design begin with<br />
+                  an even <span>better story</span>
+                </h2>
+              </div>
+              <p class="scroll-animation" data-animation="fade_from_bottom">
+                Since beginning my journey as a freelance designer nearly 8
+                years ago, I've done remote work for agencies, consulted for
+                startups, and collaborated with talented people to create
+                digital products for both business and consumer use. I'm quietly
+                confident, naturally curious, and perpetually working on
+                improving my chopsone design problem at a time.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="resume-area" id="resume">
+          <div class="custom-container">
+            <div class="resume-content content-width">
+              <div class="section-header">
+                <h4
+                  class="subtitle scroll-animation"
+                  data-animation="fade_from_bottom"
+                >
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.875 17.5C16.875 17.3342 16.9408 17.1753 17.0581 17.0581C17.1753 16.9408 17.3342 16.875 17.5 16.875H22.5C22.6658 16.875 22.8247 16.9408 22.9419 17.0581C23.0592 17.1753 23.125 17.3342 23.125 17.5C23.125 17.6658 23.0592 17.8247 22.9419 17.9419C22.8247 18.0592 22.6658 18.125 22.5 18.125H17.5C17.3342 18.125 17.1753 18.0592 17.0581 17.9419C16.9408 17.8247 16.875 17.6658 16.875 17.5ZM35.625 11.25V31.25C35.625 31.7473 35.4275 32.2242 35.0758 32.5758C34.7242 32.9275 34.2473 33.125 33.75 33.125H6.25C5.75272 33.125 5.27581 32.9275 4.92417 32.5758C4.57254 32.2242 4.375 31.7473 4.375 31.25V11.25C4.375 10.7527 4.57254 10.2758 4.92417 9.92417C5.27581 9.57254 5.75272 9.375 6.25 9.375H13.125V7.5C13.125 6.6712 13.4542 5.87634 14.0403 5.29029C14.6263 4.70424 15.4212 4.375 16.25 4.375H23.75C24.5788 4.375 25.3737 4.70424 25.9597 5.29029C26.5458 5.87634 26.875 6.6712 26.875 7.5V9.375H33.75C34.2473 9.375 34.7242 9.57254 35.0758 9.92417C35.4275 10.2758 35.625 10.7527 35.625 11.25ZM14.375 9.375H25.625V7.5C25.625 7.00272 25.4275 6.52581 25.0758 6.17417C24.7242 5.82254 24.2473 5.625 23.75 5.625H16.25C15.7527 5.625 15.2758 5.82254 14.9242 6.17417C14.5725 6.52581 14.375 7.00272 14.375 7.5V9.375ZM5.625 11.25V18.125C10.0162 20.586 14.9662 21.8773 20 21.875C25.0338 21.8773 29.9838 20.586 34.375 18.125V11.25C34.375 11.0842 34.3092 10.9253 34.1919 10.8081C34.0747 10.6908 33.9158 10.625 33.75 10.625H6.25C6.08424 10.625 5.92527 10.6908 5.80806 10.8081C5.69085 10.9253 5.625 11.0842 5.625 11.25ZM34.375 31.25V19.5469C29.9482 21.8976 25.0122 23.1262 20 23.125C14.9877 23.1266 10.0517 21.898 5.625 19.5469V31.25C5.625 31.4158 5.69085 31.5747 5.80806 31.6919C5.92527 31.8092 6.08424 31.875 6.25 31.875H33.75C33.9158 31.875 34.0747 31.8092 34.1919 31.6919C34.3092 31.5747 34.375 31.4158 34.375 31.25Z"
+                      fill="#909090"
+                    />
+                  </svg>
+                  <!-- <i class="las la-briefcase"></i> -->
+                  resume
+                </h4>
+                <h2 class="scroll-animation" data-animation="fade_from_bottom">
+                  Education & <span>Experience</span>
+                </h2>
+              </div>
+              <div class="resume-timeline">
+                <div
+                  class="item scroll-animation"
+                  data-animation="fade_from_right"
+                >
+                  <span class="date">2020 - Present</span>
+                  <h3>Framer Desinger &amp;Developer</h3>
+                  <p>Brunodee Agency</p>
+                  <h3>Front-End WordPress Developer</h3>
+                  <p>Envato Market</p>
+                </div>
+                <div
+                  class="item scroll-animation"
+                  data-animation="fade_from_right"
+                >
+                  <span class="date">2013 - 2019</span>
+                  <h3>Webflow Developer &amp;Co-Founder</h3>
+                  <p>Designflow Studio</p>
+                  <h3>Web Designer</h3>
+                  <p>Freelance</p>
+                  <h3>Leader Team of Marketing</h3>
+                  <p>AHA Marketing Agency</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="skills-area" id="skills">
+          <div class="custom-container">
+            <div class="skills-content content-width">
+              <div class="section-header">
+                <h4
+                  class="subtitle scroll-animation"
+                  data-animation="fade_from_bottom"
+                >
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="21.525"
+                      y="21.525"
+                      width="15.1342"
+                      height="15.1342"
+                      stroke="#909090"
+                      stroke-width="1.68158"
+                      stroke-linecap="round"
+                    />
+                    <rect
+                      x="2.84079"
+                      y="21.525"
+                      width="15.1342"
+                      height="15.1342"
+                      rx="7.5671"
+                      stroke="#909090"
+                      stroke-width="1.68158"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M35.7995 17.7648H22.3847L29.0921 4.35008L35.7995 17.7648Z"
+                      stroke="#909090"
+                      stroke-width="2.10197"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  <!-- <i class="las la-shapes"></i> -->
+                  my skills
+                </h4>
+                <h2 class="scroll-animation" data-animation="fade_from_bottom">
+                  My <span>Advantages</span>
+                </h2>
+              </div>
+              <div class="row skills text-center">
+                <div
+                  class="card scroll-animation"
+                  data-animation="fade_from_left"
+                >
+                  <div class="skill">
+                    <div class="skill-inner">
+                      <img
+                        decoding="async"
+                        src="https://wpriverthemes.com/drake/wp-content/uploads/2023/03/figma.png"
+                        alt="Figma"
+                      />
+                      <h2 class="percent">92%</h2>
+                    </div>
+                    <p class="name">Figma</p>
+                  </div>
+                </div>
+                <div
+                  class="card scroll-animation"
+                  data-animation="fade_from_bottom"
+                >
+                  <div class="skill">
+                    <div class="skill-inner">
+                      <img
+                        decoding="async"
+                        src="https://wpriverthemes.com/drake/wp-content/uploads/2023/03/framer.png"
+                        alt="Figma"
+                      />
+                      <h2 class="percent">85%</h2>
+                    </div>
+                    <p class="name">Framer</p>
+                  </div>
+                </div>
+                <div
+                  class="card scroll-animation"
+                  data-animation="fade_from_top"
+                >
+                  <div class="skill">
+                    <div class="skill-inner">
+                      <img
+                        decoding="async"
+                        src="https://wpriverthemes.com/drake/wp-content/uploads/2023/03/webflow.png"
+                        alt="Figma"
+                      />
+                      <h2 class="percent">80%</h2>
+                    </div>
+                    <p class="name">Webflow</p>
+                  </div>
+                </div>
+                <div
+                  class="card scroll-animation"
+                  data-animation="fade_from_right"
+                >
+                  <div class="skill">
+                    <div class="skill-inner">
+                      <img
+                        decoding="async"
+                        src="https://wpriverthemes.com/drake/wp-content/uploads/2023/03/react.png"
+                        alt="Figma"
+                      />
+                      <h2 class="percent">90%</h2>
+                    </div>
+                    <p class="name">React</p>
+                  </div>
+                </div>
+                <div
+                  class="card scroll-animation"
+                  data-animation="fade_from_left"
+                >
+                  <div class="skill">
+                    <div class="skill-inner">
+                      <img
+                        decoding="async"
+                        src="https://wpriverthemes.com/drake/wp-content/uploads/2023/03/wordpress.png"
+                        alt="Figma"
+                      />
+                      <h2 class="percent">86%</h2>
+                    </div>
+                    <p class="name">WordPress</p>
+                  </div>
+                </div>
+                <div
+                  class="card scroll-animation"
+                  data-animation="fade_from_bottom"
+                >
+                  <div class="skill">
+                    <div class="skill-inner">
+                      <img
+                        decoding="async"
+                        src="https://wpriverthemes.com/drake/wp-content/uploads/2023/03/laravel.png"
+                        alt="Figma"
+                      />
+                      <h2 class="percent">70%</h2>
+                    </div>
+                    <p class="name">Laravel/PHP</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="portfolio-area" id="portfolio">
+          <div class="custom-container">
+            <div class="portfolio-content content-width">
+              <div class="section-header">
+                <h4
+                  class="subtitle scroll-animation"
+                  data-animation="fade_from_bottom"
+                >
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="8"
+                      y="2"
+                      width="10"
+                      height="10"
+                      stroke="#909090"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <rect
+                      x="21"
+                      y="2"
+                      width="10"
+                      height="10"
+                      stroke="#909090"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <rect
+                      x="8"
+                      y="15"
+                      width="10"
+                      height="10"
+                      stroke="#909090"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <rect
+                      x="21"
+                      y="15"
+                      width="10"
+                      height="10"
+                      stroke="#909090"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <rect
+                      x="8"
+                      y="28"
+                      width="10"
+                      height="10"
+                      stroke="#909090"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <rect
+                      x="21"
+                      y="28"
+                      width="10"
+                      height="10"
+                      stroke="#909090"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  <!-- <i class="las la-grip-vertical"></i> -->
+                  portfolio
+                </h4>
+                <h2 class="scroll-animation" data-animation="fade_from_bottom">
+                  Featured <span>Projects</span>
+                </h2>
+              </div>
+              <div class="row portfolio-items">
+                <div class="portfolio-item portfolio-full">
+                  <div class="portfolio-item-inner">
+                    <a href="#">
+                      <img
+                        src="./assets/images/wizzy-safaris.png"
+                        alt="project"
+                      />
+                    </a>
+                  </div>
+                  <h3>
+                    <a target="_blank" href="#">Africa Wizzy Safaris</a>
+                  </h3>
+                  <p>
+                    A tour company based in Rwanda that helps both country
+                    citizens and tourist especially disabled people to visit
+                    Rwanda.
+                  </p>
+                </div>
+                <div class="portfolio-item portfolio-full">
+                  <div class="portfolio-item-inner">
+                    <a href="#">
+                      <img
+                        src="./assets/images/wizzy-safaris.png"
+                        alt="project"
+                      />
+                    </a>
+                  </div>
+                  <h3>
+                    <a target="_blank" href="#">Africa Wizzy Safaris</a>
+                  </h3>
+                  <p>
+                    A tour company based in Rwanda that helps both country
+                    citizens and tourist especially disabled people to visit
+                    Rwanda.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="testimonial-area" id="testimonial">
+          <div class="custom-container">
+            <div class="testimonial-content content-width">
+              <div class="section-header">
+                <h4
+                  class="subtitle scroll-animation"
+                  data-animation="fade_from_bottom"
+                >
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6.66663 20C6.66663 16.4638 8.07138 13.0724 10.5719 10.5719C13.0724 8.07142 16.4637 6.66666 20 6.66666C23.5362 6.66666 26.9276 8.07142 29.428 10.5719C31.9285 13.0724 33.3333 16.4638 33.3333 20V28.4833C33.3333 29.8967 33.3333 30.6 33.1233 31.165C32.9563 31.6127 32.695 32.0193 32.3571 32.3572C32.0193 32.6951 31.6127 32.9563 31.165 33.1233C30.6 33.3333 29.895 33.3333 28.4833 33.3333H20C16.4637 33.3333 13.0724 31.9286 10.5719 29.4281C8.07138 26.9276 6.66663 23.5362 6.66663 20Z"
+                      stroke="#909090"
+                      stroke-width="1.66667"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M15 18.3333H25M20 25H25"
+                      stroke="#909090"
+                      stroke-width="1.66667"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <!-- <i class="lar la-comment"></i> -->
+                  testimonial
+                </h4>
+                <h2 class="scroll-animation" data-animation="fade_from_bottom">
+                  Satisfied by <span>Clients</span>
+                </h2>
+              </div>
+              <div
+                class="testimonial-slider-wrap scroll-animation"
+                data-animation="fade_from_bottom"
+              >
+                <div class="owl-carousel testimonial-slider owl-theme">
+                  <div class="testimonial-item">
+                    <div class="testimonial-item-inner">
+                      <div class="author d-flex align-items-center">
+                        <img
+                          decoding="async"
+                          src="./assets/images/1642048213572.jpg"
+                          alt="portfolio"
+                        />
+                        <div class="right">
+                          <h3>John Doe</h3>
+                          <p class="designation">
+                            CEO of <span>ARI Cube</span>
+                          </p>
+                        </div>
+                      </div>
+                      <p>
+                        “Eloi - A Developer with the creativity, professional
+                        and master of code. Much more than what I anticipated.
+                        Great team player. Recommended!.”
+                      </p>
+                      <a href="#" class="project-btn">Project</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="contact-area" id="contact">
+          <div class="custom-container">
+            <div class="contact-content content-width">
+              <div class="section-header">
+                <h4
+                  class="subtitle scroll-animation"
+                  data-animation="fade_from_bottom"
+                >
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 10L20 20L36 10"
+                      stroke="#909090"
+                      stroke-width="1.5"
+                    />
+                    <rect
+                      x="4"
+                      y="10"
+                      width="32"
+                      height="18"
+                      stroke="#909090"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  <!-- <i class="las la-envelope"></i> -->
+                  contact
+                </h4>
+                <h2 class="scroll-animation" data-animation="fade_from_bottom">
+                  Let's Work <span>Together!</span>
+                </h2>
+              </div>
+              <h3 class="scroll-animation" data-animation="fade_from_bottom">
+                eloi.chrysanthe@gmail.com
+              </h3>
+              <p id="required-msg">* Marked fields are required to fill.</p>
+              <div
+                class="wpcf7 no-js"
+                id="wpcf7-f172-p8-o1"
+                lang="en-US"
+                dir="ltr"
+              >
+                <div class="screen-reader-response">
+                  <p role="status" aria-live="polite" aria-atomic="true"></p>
+                  <ul></ul>
+                </div>
+                <form method="post">
+                  <div style="display: none">
+                    <input type="hidden" name="_wpcf7" value="172" />
+                    <input type="hidden" name="_wpcf7_version" value="5.8.6" />
+                    <input type="hidden" name="_wpcf7_locale" value="en_US" />
+                    <input
+                      type="hidden"
+                      name="_wpcf7_unit_tag"
+                      value="wpcf7-f172-p8-o1"
+                    />
+                    <input
+                      type="hidden"
+                      name="_wpcf7_container_post"
+                      value="8"
+                    />
+                    <input
+                      type="hidden"
+                      name="_wpcf7_posted_data_hash"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    class="alert alert-success messenger-box-contact__msg"
+                    style="display: none"
+                    role="alert"
+                  >
+                    <p>Your message was sent successfully.</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <p>
+                          <label for="full-name">
+                            full Name <sup>*</sup>
+                          </label>
+                          <span class="" data-name="full-name">
+                            <input
+                              size="40"
+                              class="input-group"
+                              id="full-name"
+                              aria-required="true"
+                              aria-invalid="false"
+                              placeholder="Your Full Name"
+                              value=""
+                              type="text"
+                              name="full-name"
+                            />
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <p>
+                          <label for="email">Email <sup>*</sup> </label>
+                          <span
+                            class="wpcf7-form-control-wrap"
+                            data-name="email"
+                          >
+                            <input
+                              size="40"
+                              class="input-group"
+                              aria-required="true"
+                              aria-invalid="false"
+                              placeholder="Your email adress"
+                              value=""
+                              type="email"
+                              name="email"
+                            />
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <p>
+                          <label for="phone-number">
+                            phone <span>(optional)</span>
+                          </label>
+                          <span
+                            class="wpcf7-form-control-wrap"
+                            data-name="phone"
+                          >
+                            <input
+                              class="input-group"
+                              aria-invalid="false"
+                              placeholder="Your number phone"
+                              value=""
+                              type="number"
+                              name="phone"
+                            />
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <p>
+                          <label for="subject">Subject <sup>*</sup> </label>
+                          <span
+                            class="wpcf7-form-control-wrap"
+                            data-name="subject"
+                          >
+                            <input
+                              size="40"
+                              class="input-group"
+                              id="subject"
+                              aria-required="true"
+                              aria-invalid="false"
+                              placeholder="Your Subject"
+                              value=""
+                              type="text"
+                              name="subject"
+                            />
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="">
+                      <div class="input-group">
+                        <p>
+                          <label for="message">message</label>
+                          <span
+                            class="wpcf7-form-control-wrap"
+                            data-name="message"
+                          >
+                            <textarea
+                              cols="40"
+                              rows="2"
+                              class="input-group"
+                              id="message"
+                              aria-invalid="false"
+                              placeholder="Write your message here ..."
+                              name="message"
+                            ></textarea>
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="send-message">
+                      <a href="" class="theme-btn">Send message</a>
+                    </div>
+                  </div>
+                  <div class="wpcf7-response-output" aria-hidden="true"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+  <script src="./js/main.js" defer></script>
+</html>

@@ -1,0 +1,86 @@
+.dmenu {
+  flex-direction: column;
+  border: 1px solid #575757;
+  border-radius: 30px;
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  text-align: center;
+  gap: 20px;
+  padding: 24px 0;
+  background: var(--main-color);
+  z-index: 20;
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+.dmenu li .scroll-to,
+.dmenu li a {
+  display: block;
+  position: relative;
+  /* padding: 10px 10px; */
+  width: 55px;
+  transition: 0.3s;
+  color: var(--text-color);
+  cursor: pointer;
+  scroll-behavior: smooth;
+}
+.dmenu li a.active,
+.dmenu li a:hover,
+.dmenu li .scroll-to.active,
+.dmenu li .scroll-to:hover,
+.dmenu li a:hover svg rect,
+.dmenu li a:hover svg path,
+.dmenu li a.active svg rect,
+.dmenu li a.active svg path {
+  color: var(--teritiary);
+  stroke: var(--teritiary);
+}
+.dmenu li .scroll-to:hover span,
+.dmenu li a:hover span {
+  opacity: 1;
+  visibility: visible;
+}
+.dmenu li .scroll-to i,
+.dmenu li a i {
+  font-size: 20px;
+  display: block;
+}
+.dmenu li .scroll-to span,
+.dmenu li a span {
+  position: absolute;
+  transition: 0.3s;
+  font-size: 12px;
+  background: var(--text-color);
+  right: 100%;
+  color: var(--teritiary);
+  display: block;
+  padding: 3px 8px;
+  border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dmenu li .scroll-to img,
+.dmenu li a img,
+.dmenu li a svg {
+  height: 20px;
+  width: 20px;
+}
+
+.dmenu li .scroll-to span::before,
+.dmenu li a span::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--text-color);
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  transform: rotate(54deg) skew(-8deg, -39deg);
+  margin-top: -5px;
+  z-index: -1;
+}
