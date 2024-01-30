@@ -33,6 +33,9 @@
   .left-sidebar .sidebar-header .designation {
     line-height: 1.4;
   }
+  .mode {
+    position: fixed !important;
+  }
 }
 
 @media (max-width: 1220px) {
@@ -70,7 +73,9 @@
     width: auto;
   }
   .icon-menu {
-    position: fixed;
+    position: fixed !important;
     display: flex !important;
+    right: 20px !important;
+    top: 20px !important;
   }
 }

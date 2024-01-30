@@ -9,12 +9,19 @@
 :root {
   --main-color: #1f1f1f;
   --secondary-color: #c0c0c0;
-  --white: #fff;
-  --text-color: #999999;
+  --teritiary: #fff;
+  --text-color: #909090;
+}
+
+.light-theme {
+  --main-color: #c0c0c0;
+  --secondary-color: #1f1f1f;
+  --teritiary: #000;
+  --text-color: #545454;
 }
 
 .bg-white {
-  background: #fff;
+  background: var(--teritiary);
 }
 img {
   max-width: 100%;
@@ -72,7 +79,7 @@ ul {
 }
 .subtitle {
   font-size: 14px;
-  color: #ffffff;
+  color: var(--secondary-color);
   text-transform: uppercase;
   font-weight: 300;
   margin: 0;
@@ -83,9 +90,8 @@ ul {
   display: inline-flex;
   align-items: center;
 }
-.subtitle img {
+.subtitle svg {
   margin-bottom: 1px;
-  margin-right: 10px;
   height: 20px;
 }
 
@@ -115,7 +121,7 @@ ul {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: var(--secondary-color);
   transform-origin: 50%;
   animation: bounceLoader 500ms alternate infinite ease;
 }
@@ -130,13 +136,13 @@ ul {
   border-radius: 50%;
   display: flex;
   flex-direction: column;
-  border: 1px solid #575757;
+  border: 1px solid #909090;
   align-items: center;
   justify-content: center;
   gap: 4px;
   cursor: pointer;
   transition: 0.3s;
-  background: #1f1f1f;
+  /* background: #1f1f1f; */
   z-index: 99;
 }
 
@@ -154,6 +160,7 @@ ul {
 
 .icon-menu:hover,
 .mode:hover {
+  background-color: var(--secondary-color);
   border-color: var(--secondary-color);
 }
 
@@ -168,7 +175,7 @@ ul {
 
 .mode:hover,
 .mode:hover svg path {
-  stroke: var(--secondary-color);
+  stroke: var(--main-color);
 }
 
 .page-section {

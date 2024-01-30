@@ -1,0 +1,30 @@
+/* Define the light theme (default) */
+:root {
+  --bg-color: white; /* Background color */
+  --text-color: black; /* Text color */
+}
+
+/* Define the dark theme */
+.dark-theme {
+  --bg-color: black; /* Background color */
+  --text-color: white; /* Text color */
+}
+/* Apply the theme colors to the body element */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+/* Style the toggle button */
+#toggle {
+  position: fixed; /* Fix the position of the button */
+  top: 10px; /* Set the bottom position to 10 pixels */
+  left: 10px; /* Set the right position to 10 pixels */
+  padding: 10px; /* Add some space around the button */
+  border: none; /* Remove the border */
+  border-radius: 5px; /* Add some rounded corners */
+  cursor: pointer; /* Change the cursor to a pointer */
+}
+/* Change the button color on hover */
+#toggle:hover {
+  background-color: gray;
+}

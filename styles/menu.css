@@ -10,7 +10,7 @@
   text-align: center;
   gap: 20px;
   padding: 24px 0;
-  background: #1f1f1f;
+  background: var(--main-color);
   z-index: 20;
   display: flex;
   list-style: none;
@@ -24,14 +24,20 @@
   /* padding: 10px 10px; */
   width: 55px;
   transition: 0.3s;
-  color: #999999;
+  color: var(--text-color);
   cursor: pointer;
+  scroll-behavior: smooth;
 }
 .dmenu li a.active,
 .dmenu li a:hover,
 .dmenu li .scroll-to.active,
-.dmenu li .scroll-to:hover {
-  color: var(--primary_color);
+.dmenu li .scroll-to:hover,
+.dmenu li a:hover svg rect,
+.dmenu li a:hover svg path,
+.dmenu li a.active svg rect,
+.dmenu li a.active svg path {
+  color: var(--teritiary);
+  stroke: var(--teritiary);
 }
 .dmenu li .scroll-to:hover span,
 .dmenu li a:hover span {
@@ -48,9 +54,9 @@
   position: absolute;
   transition: 0.3s;
   font-size: 12px;
-  background: #404042;
+  background: var(--text-color);
   right: 100%;
-  color: #fff;
+  color: var(--teritiary);
   display: block;
   padding: 3px 8px;
   border-radius: 5px;
@@ -59,7 +65,8 @@
 }
 
 .dmenu li .scroll-to img,
-.dmenu li a img {
+.dmenu li a img,
+.dmenu li a svg {
   height: 20px;
   width: 20px;
 }
@@ -69,7 +76,7 @@
   content: "";
   width: 10px;
   height: 10px;
-  background: #404042;
+  background: var(--text-color);
   position: absolute;
   right: -3px;
   top: 50%;
