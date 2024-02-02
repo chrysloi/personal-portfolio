@@ -5,20 +5,106 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* position: fixed; */
   padding: 20px 100px;
-  background: #1f1f1f;
-  border-bottom: 1px #c0c0c0 solid;
+  background: var(--main-color);
+  border-bottom: 1px var(--secondary-color) solid;
   align-items: center;
   z-index: 99;
+  position: fixed;
+}
+
+.blog-content {
+  margin-top: 80px;
+}
+
+.blog-content p.title {
+  color: var(--teritiary);
+  font-size: 40px;
+  font-family: Poppins;
+  font-weight: 400;
+  margin-bottom: 24px;
 }
 
 .blog-header input {
   width: 150px;
   height: 30px;
   border-radius: 30px;
-  border: 2px #c0c0c0 solid;
+  border: 2px var(--secondary-color) solid;
   padding: 0px 10px;
   background-color: transparent;
   color: var(--teritiary);
+}
+
+.blog-card {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.blog-card-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.blog-card-title {
+  width: 90%;
+  color: var(--teritiary);
+  font-size: 20px;
+  font-family: Poppins;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.blog-card-description {
+  width: 90%;
+  color: var(--text-color);
+  font-size: 16px;
+  font-family: Poppins;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.blog-card-date {
+  color: var(--text-color);
+  font-size: 16px;
+  font-family: Poppins;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.blog-card-footer {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.blog-card-footer p {
+  background: #c0c0c0;
+  border-radius: 20px;
+  padding: 0px 10px;
+}
+
+.blog-content .author-date {
+  display: flex;
+  flex-direction: row;
+  /* height: 40px; */
+}
+
+.blog-content .author-date .date {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  font-size: 16px;
+  font-family: Poppins;
+  font-weight: 400;
+  margin-left: 12px;
+  color: var(--teritiary);
+}
+
+.blog-content .author-date .date span {
+  color: var(--text-color);
 }
