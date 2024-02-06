@@ -50,32 +50,19 @@ ul {
 .d-flex {
   display: flex !important;
 }
-/* .theme-btn {
-    background: var(--primary_color);
-    color: #000000;
-    display: block;
-    text-align: center;
-    padding: 11px 58px 10px 58px;
-    display: inline-flex;
-    align-items: center;
-    border-radius: 30px;
-    justify-content: center;
-    text-transform: uppercase;
-    border: none;
-    transition: .3s;
-    cursor: pointer;
-    border: 2px solid var(--primary_color);
+
+/* Logo */
+svg.logo {
+  transition: 0.3s;
+  cursor: pointer;
 }
-.theme-btn i {
-    font-size: 24px;
-    margin-right: 10px;
-    display: block;
-    margin-bottom: 3px;
+svg.logo path {
+  fill: var(--teritiary);
 }
-.theme-btn:hover {
-    background: none;
-    color: var(--primary_color);
-} */
+svg.logo rect {
+  stroke: var(--teritiary);
+}
+/* --- */
 .custom-container {
   max-width: 1230px;
   padding: 0 15px;

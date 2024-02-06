@@ -237,3 +237,32 @@
 .blog-content .author-date .date span {
   color: var(--text-color);
 }
+
+/* Editor */
+#editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#editor {
+  width: 100%;
+  min-height: 300px;
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  border-radius: 10px;
+}
+#toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+#toolbar button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+/* end of editor */
