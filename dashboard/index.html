@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eloi Chrysanthe | Dashboard</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard-header">
+      <svg
+        width="101"
+        height="51"
+        viewBox="0 0 101 51"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="logo"
+      >
+        <g clip-path="url(#clip0_161_2463)">
+          <path
+            d="M7.58086 19.5286V27.3H16.7237V30.8429H7.58086V38.9571H17.8666V42.5H3.238V15.9857H17.8666V19.5286H7.58086ZM27.5585 14.3095V42.5H23.2157V14.3095H27.5585ZM42.3651 42.8429C40.3841 42.8429 38.5937 42.3984 36.9937 41.5095C35.3937 40.5952 34.1365 39.3254 33.2222 37.7C32.3079 36.0492 31.8508 34.1444 31.8508 31.9857C31.8508 29.8524 32.3206 27.9603 33.2603 26.3095C34.2 24.6587 35.4825 23.3889 37.1079 22.5C38.7333 21.6111 40.5492 21.1667 42.5556 21.1667C44.5619 21.1667 46.3778 21.6111 48.0032 22.5C49.6286 23.3889 50.9111 24.6587 51.8508 26.3095C52.7905 27.9603 53.2603 29.8524 53.2603 31.9857C53.2603 34.119 52.7778 36.0111 51.8127 37.6619C50.8476 39.3127 49.527 40.5952 47.8508 41.5095C46.2 42.3984 44.3714 42.8429 42.3651 42.8429ZM42.3651 39.0714C43.4825 39.0714 44.5238 38.8048 45.4889 38.2714C46.4794 37.7381 47.2794 36.9381 47.8889 35.8714C48.4984 34.8048 48.8032 33.5095 48.8032 31.9857C48.8032 30.4619 48.5111 29.1794 47.927 28.1381C47.3429 27.0714 46.5683 26.2714 45.6032 25.7381C44.6381 25.2048 43.5968 24.9381 42.4794 24.9381C41.3619 24.9381 40.3206 25.2048 39.3556 25.7381C38.4159 26.2714 37.6667 27.0714 37.1079 28.1381C36.5492 29.1794 36.2698 30.4619 36.2698 31.9857C36.2698 34.246 36.8413 35.9984 37.9841 37.2429C39.1524 38.4619 40.6127 39.0714 42.3651 39.0714ZM59.763 18.7286C58.9757 18.7286 58.3154 18.4619 57.782 17.9286C57.2487 17.3952 56.982 16.7349 56.982 15.9476C56.982 15.1603 57.2487 14.5 57.782 13.9667C58.3154 13.4333 58.9757 13.1667 59.763 13.1667C60.5249 13.1667 61.1725 13.4333 61.7059 13.9667C62.2392 14.5 62.5059 15.1603 62.5059 15.9476C62.5059 16.7349 62.2392 17.3952 61.7059 17.9286C61.1725 18.4619 60.5249 18.7286 59.763 18.7286ZM61.8963 21.5095V42.5H57.5535V21.5095H61.8963Z"
+            fill="white"
+          />
+          <g clip-path="url(#clip1_161_2463)">
+            <path
+              d="M88.6685 8.38571V11.3H92.097V12.6286H88.6685V15.6714H92.5256V17H87.0399V7.05714H92.5256V8.38571H88.6685Z"
+              fill="white"
+            />
+          </g>
+          <rect
+            x="79.2381"
+            y="1.2381"
+            width="20.9524"
+            height="20.9524"
+            rx="10.4762"
+            stroke="white"
+            stroke-width="0.47619"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_161_2463">
+            <rect
+              width="100"
+              height="50"
+              fill="white"
+              transform="translate(0.380859 0.5)"
+            />
+          </clipPath>
+          <clipPath id="clip1_161_2463">
+            <rect
+              x="79"
+              y="1"
+              width="21.4286"
+              height="21.4286"
+              rx="10.7143"
+              fill="white"
+            />
+          </clipPath>
+        </defs>
+      </svg>
+      <img
+        style="width: 45px; height: 45px; border-radius: 25px"
+        src="../assets/images/1642048213572.jpg"
+      />
+    </div>
+    <ul class="dashboard-menu">
+      <li>
+        <a
+          href="#dashboard"
+          onclick="changeDashboardView('dashboard')"
+          class="scroll-to"
+        >
+          <span>Dashboard</span>
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.25 11.25V3.75H26.25V11.25H16.25ZM3.75 16.25V3.75H13.75V16.25H3.75ZM16.25 26.25V13.75H26.25V26.25H16.25ZM3.75 26.25V18.75H13.75V26.25H3.75ZM6.25 13.75H11.25V6.25H6.25V13.75ZM18.75 23.75H23.75V16.25H18.75V23.75ZM18.75 8.75H23.75V6.25H18.75V8.75ZM6.25 23.75H11.25V21.25H6.25V23.75Z"
+              fill="#909090"
+            />
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#articles"
+          onclick="changeDashboardView('articles')"
+          class="scroll-to"
+        >
+          <span>Articles</span>
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19.5 0C20.2956 0 21.0587 0.316071 21.6213 0.87868C22.1839 1.44129 22.5 2.20435 22.5 3H9C8.20435 3 7.44129 3.31607 6.87868 3.87868C6.31607 4.44129 6 5.20435 6 6V24C5.20435 24 4.44129 23.6839 3.87868 23.1213C3.31607 22.5587 3 21.7956 3 21V3C3 2.20435 3.31607 1.44129 3.87868 0.87868C4.44129 0.316071 5.20435 0 6 0L19.5 0Z"
+              fill="#909090"
+            />
+            <path
+              d="M27 7.5C27 6.70435 26.6839 5.94129 26.1213 5.37868C25.5587 4.81607 24.7956 4.5 24 4.5H10.5C9.70435 4.5 8.94129 4.81607 8.37868 5.37868C7.81607 5.94129 7.5 6.70435 7.5 7.5V27C7.5 27.7956 7.81607 28.5587 8.37868 29.1213C8.94129 29.6839 9.70435 30 10.5 30H24C24.7956 30 25.5587 29.6839 26.1213 29.1213C26.6839 28.5587 27 27.7956 27 27V7.5ZM16.5 15H10.5V7.5H16.5V15ZM24 9H18V7.5H24V9ZM24 12H18V10.5H24V12ZM24 15H18V13.5H24V15ZM24 18H10.5V16.5H24V18ZM24 21H10.5V19.5H24V21ZM24 24H10.5V22.5H24V24Z"
+              fill="#909090"
+            />
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#projects"
+          onclick="changeDashboardView('projects')"
+          class="scroll-to"
+        >
+          <span>projects</span>
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M28.125 16.875H18.75V22.9388C18.7523 23.826 19.0054 24.6946 19.4799 25.4443C19.9545 26.1941 20.6312 26.7944 21.4322 27.1763L23.4375 28.125L25.4428 27.1753C26.2438 26.7935 26.9205 26.1931 27.3951 25.4434C27.8696 24.6937 28.1227 23.8251 28.125 22.9378V16.875ZM23.4375 26.0494L22.2347 25.4803C21.7541 25.2515 21.348 24.8914 21.0632 24.4417C20.7784 23.9921 20.6265 23.471 20.625 22.9388V18.75H26.25V22.9388C26.2483 23.4709 26.0964 23.9917 25.8116 24.4412C25.5268 24.8907 25.1207 25.2506 24.6403 25.4794L23.4375 26.0494ZM15.9375 16.875H4.6875C4.19022 16.875 3.71331 17.0725 3.36167 17.4242C3.01004 17.7758 2.8125 18.2527 2.8125 18.75V23.4375C2.8125 23.9348 3.01004 24.4117 3.36167 24.7633C3.71331 25.115 4.19022 25.3125 4.6875 25.3125H15.9375V23.4375H4.6875V18.75H15.9375V16.875ZM25.3125 3.75H20.625C20.1277 3.75 19.6508 3.94754 19.2992 4.29917C18.9475 4.65081 18.75 5.12772 18.75 5.625V14.0625H20.625V5.625H25.3125V14.0625H27.1875V5.625C27.1875 5.12772 26.99 4.65081 26.6383 4.29917C26.2867 3.94754 25.8098 3.75 25.3125 3.75ZM14.0625 3.75H4.6875C4.19022 3.75 3.71331 3.94754 3.36167 4.29917C3.01004 4.65081 2.8125 5.12772 2.8125 5.625V12.1875C2.8125 12.6848 3.01004 13.1617 3.36167 13.5133C3.71331 13.865 4.19022 14.0625 4.6875 14.0625H14.0625C14.5598 14.0625 15.0367 13.865 15.3883 13.5133C15.74 13.1617 15.9375 12.6848 15.9375 12.1875V5.625C15.9375 5.12772 15.74 4.65081 15.3883 4.29917C15.0367 3.94754 14.5598 3.75 14.0625 3.75ZM4.6875 12.1875V5.625H14.0625V12.1875H4.6875Z"
+              fill="#909090"
+            />
+          </svg>
+        </a>
+      </li>
+    </ul>
+    <main id="content">
+      <section id="dashboard">
+        <div class="dashboard-content">
+          <div class="dashboard-content-header">
+            <div class="dashboard-content-header-title">
+              <h1>Dashboard</h1>
+            </div>
+          </div>
+          <div class="dashboard-content-body">
+            <h2>Articles</h2>
+            <div class="contents">
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-content-body">
+            <h2>Projects</h2>
+            <div class="contents">
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="articles">
+        <div class="dashboard-content">
+          <div class="dashboard-content-header view-header">
+            <div class="dashboard-content-header-title">
+              <h1>All Articles</h1>
+            </div>
+            <div class="btn-group">
+              <div class="login-btn">
+                <a href="" class="theme-btn add">New article</a>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-content-body">
+            <div class="contents">
+              <div class="card" onclick="viewArticle()">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="projects">
+        <div class="dashboard-content">
+          <div class="dashboard-content-header view-header">
+            <div class="dashboard-content-header-title">
+              <h1>All Projects</h1>
+            </div>
+            <div class="btn-group">
+              <div class="login-btn">
+                <a href="" class="theme-btn add">New project</a>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-content-body">
+            <div class="contents">
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+              <div class="card">
+                <img
+                  src="../assets//images/wizzy-safaris.png"
+                  alt=""
+                  class="card-image"
+                />
+                <div class="card-title">Africa Wizzy safaris</div>
+                <div class="card-description">
+                  A tour company based in Rwanda that helps both country
+                  citizens and tourist especially disabled people to visit
+                  Rwanda.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- <section id="articleView">
+        <div class="dashboard-content">
+          <div class="dashboard-content-header view-header">
+            <div class="dashboard-content-header-title">
+              <h1>View Article</h1>
+            </div>
+            <div class="btn-group">
+              <div class="login-btn">
+                <a href="" class="theme-btn edit">Edit</a>
+              </div>
+              <div class="login-btn">
+                <a href="" class="theme-btn delete">Delete</a>
+              </div>
+            </div>
+          </div>
+          <div class="blog-content">
+            <p class="title">
+              How to Create a React Project from Scratch: Crafting Your Web App
+              Dream
+            </p>
+            <div class="author-date">
+              <img
+                style="width: 45px; height: 45px; border-radius: 25px"
+                src="../assets/images/1642048213572.jpg"
+              />
+              <div class="date">
+                <p>Eloi Chrysanthe<br /><span>Jan 17, 2024</span></p>
+              </div>
+            </div>
+            <img
+              style="width: 100%; height: auto"
+              src="../assets/images/coverImage.svg"
+            />
+            <br />
+            <br />
+            <p class="details">
+              So, you've heard the buzz about React and you're itching to build
+              your own app with this powerful JavaScript library. But where do
+              you start? Fear not, aspiring web dev, for this guide will take
+              you step-by-step through the process of creating a React project
+              from scratch, even if you're a total beginner. <br /><br />1.
+              Setting the Stage: Environment Setup <br /><br />
+              Before we dive into React code, let's make sure we have the right
+              tools in the toolbox. This means installing Node.js, which forms
+              the foundation for running React projects. Head over to Node.js's
+              website and grab the latest version. Once installed, open your
+              terminal and check if it's functioning by running node -v. You
+              should see the installed version printed back.
+            </p>
+          </div>
+        </div>
+      </section> -->
+    </main>
+  </body>
+  <script src="../js/dashboard.js" defer></script>
+</html>

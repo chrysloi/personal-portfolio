@@ -1,0 +1,91 @@
+<section id="articles">
+  <div class="dashboard-content">
+    <div class="dashboard-content-header view-header">
+      <div class="dashboard-content-header-title">
+        <h1>New Article</h1>
+      </div>
+      <div class="btn-group">
+        <div class="login-btn">
+          <a onclick="newArticle()" class="theme-btn add">Publish</a>
+        </div>
+        <!-- <div class="login-btn">
+        <a href="" class="theme-btn delete">Delete</a>
+      </div> -->
+      </div>
+    </div>
+    <div class="blog-content">
+      <form method="post">
+        <div
+          class="alert alert-success messenger-box-contact__msg"
+          style="display: none"
+          role="alert"
+        >
+          <p>Your message was sent successfully.</p>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="input-group">
+              <p>
+                <label for="title">Title<sup>*</sup> </label>
+                <span class="wpcf7-form-control-wrap" data-name="title">
+                  <input
+                    id="title"
+                    size="40"
+                    class="input-group"
+                    aria-required="true"
+                    aria-invalid="false"
+                    placeholder="Article Title"
+                    type="title"
+                    name="title"
+                  />
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <p>
+                <label for="coverImage">Cover Image<sup>*</sup> </label>
+                <span class="wpcf7-form-control-wrap" data-name="coverImage">
+                  <input
+                    id="coverImage"
+                    size="40"
+                    class="input-group"
+                    aria-required="true"
+                    aria-invalid="false"
+                    type="file"
+                    name="coverImage"
+                  />
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <p>
+                <label for="article">Article<sup>*</sup> </label>
+                <span class="wpcf7-form-control-wrap" data-name="article">
+                  <div id="editor-container">
+                    <!-- <div id="toolbar">
+                      <button onclick="formatText('bold')">Bold</button>
+                      <button onclick="formatText('italic')">Italic</button>
+                      <button onclick="formatText('underline')">
+                        Underline
+                      </button>
+                      <button onclick="alignText('left')">Align Left</button>
+                      <button onclick="alignText('center')">
+                        Align Center
+                      </button>
+                      <button onclick="alignText('right')">Align Right</button>
+                    </div> -->
+                    <div id="editor" contenteditable="true"></div>
+                  </div>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
