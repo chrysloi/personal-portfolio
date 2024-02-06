@@ -1,0 +1,49 @@
+@import url("./style.css");
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  gap: 18px;
+  height: 100vh;
+}
+
+.login-container .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  background: var(--secondary-color);
+  padding: 12px 5px 5px 12px;
+  border-radius: 50%;
+  z-index: 99;
+}
+
+p.title {
+  color: var(--teritiary);
+  font-size: 40px;
+  font-family: Poppins;
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+
+.login-container .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 400px;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-btn {
+  padding: 10px 100px;
+  border-radius: 30px;
+  margin-bottom: 53px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

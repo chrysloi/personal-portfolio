@@ -82,7 +82,8 @@
 }
 
 .blog-card-footer p {
-  background: #c0c0c0;
+  background: var(--secondary-color);
+  color: var(--main-color);
   border-radius: 20px;
   padding: 0px 10px;
 }

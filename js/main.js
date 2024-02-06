@@ -47,7 +47,6 @@ themeSwitch.addEventListener("click", () => {
 
 const changeTo = (sectionId) => {
   const section = document.getElementById(sectionId);
-  console.log(sectionId);
   if (section) {
     section.scrollIntoView({ behavior: "smooth" });
     document
@@ -56,7 +55,7 @@ const changeTo = (sectionId) => {
   }
 };
 
-function getActiveSection() {
+const getActiveSection = () => {
   const sections = document.querySelectorAll("section");
   let currentSection = null;
 
@@ -71,10 +70,10 @@ function getActiveSection() {
   });
 
   return currentSection;
-}
+};
 
 // Function to update the active navigation button
-function updateActiveButton() {
+const updateActiveButton = () => {
   const currentSection = getActiveSection();
 
   if (currentSection) {
@@ -91,7 +90,7 @@ function updateActiveButton() {
       window.location.origin + window.location.pathname + "#" + currentSection;
     history.pushState(null, null, newURL);
   }
-}
+};
 
 document.addEventListener("scroll", updateActiveButton); // Event listener for scroll
 window.addEventListener("load", updateActiveButton); // Initial update when the page loads
