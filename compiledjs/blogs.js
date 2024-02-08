@@ -16,7 +16,7 @@ const loadarticles = () => {
           ${article.title}
         </div>
         <div class="blog-card-description">
-          ${article.content}
+          ${article.content.split(" ").slice(0, 30).join(" ")}...
         </div>
         <div class="blog-card-footer">
           <div class="blog-card-date">${article.createdAt
