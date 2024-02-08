@@ -111,6 +111,22 @@
   margin-bottom: 20px;
 }
 
+.dashboard-content-header-title {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+.dashboard-content-header-title a {
+  height: 30px;
+  width: 30px;
+  color: var(--teritiary);
+}
+.dashboard-content-header-title a svg path {
+  height: 30px;
+  width: 30px;
+  stroke: var(--teritiary);
+}
 .dashboard-content-header-title,
 .dashboard-content-body h2 {
   color: var(--teritiary);
@@ -132,6 +148,7 @@
   flex-basis: 20%;
   /* border: 1px solid #111; */
   height: 320px;
+  max-width: 250px;
   background: var(--card-bg);
   border-radius: 5px;
 }

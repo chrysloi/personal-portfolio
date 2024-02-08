@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eloi Chrysanthe | Login</title>
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/login.css" />
   </head>
   <body>
     <main>
@@ -25,7 +25,7 @@
           </svg>
         </div>
         <p class="title">Login</p>
-        <div class="login-form">
+        <div class="login-form" id="loginForm">
           <form method="post">
             <div
               class="alert alert-success messenger-box-contact__msg"
@@ -38,7 +38,7 @@
               <div class="col-md-6">
                 <div class="input-group">
                   <p>
-                    <label for="email">Email <sup>*</sup> </label>
+                    <label for="email">Email<sup>*</sup> </label>
                     <span class="wpcf7-form-control-wrap" data-name="email">
                       <input
                         size="40"
@@ -46,10 +46,11 @@
                         aria-required="true"
                         aria-invalid="false"
                         placeholder="Your email adress"
-                        value=""
                         type="email"
                         name="email"
+                        id="email"
                       />
+                      <p class="error"></p>
                     </span>
                   </p>
                 </div>
@@ -57,24 +58,24 @@
               <div class="col-md-6">
                 <div class="input-group">
                   <p>
-                    <label for="email">Password<sup>*</sup> </label>
-                    <span class="wpcf7-form-control-wrap" data-name="email">
+                    <label for="password">Password<sup>*</sup> </label>
+                    <span class="wpcf7-form-control-wrap" data-name="password">
                       <input
                         size="40"
                         class="input-group"
                         aria-required="true"
                         aria-invalid="false"
-                        placeholder="Your email adress"
-                        value=""
-                        type="email"
-                        name="email"
+                        placeholder="Your password"
+                        type="password"
+                        name="password"
+                        id="password"
                       />
                     </span>
                   </p>
                 </div>
               </div>
               <div class="login-btn">
-                <a href="./dashboard/index.html" class="theme-btn">Login</a>
+                <a onclick="login()" class="theme-btn"> Login </a>
               </div>
             </div>
           </form>
@@ -82,4 +83,5 @@
       </div>
     </main>
   </body>
+  <script src="./compiledjs/login.js" defer></script>
 </html>

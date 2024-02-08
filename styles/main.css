@@ -574,8 +574,35 @@ form .input-group .error {
   color: var(--red-color);
   font-size: 14px;
   margin-top: 5px;
-  display: none;
+  display: block;
 }
+
+.alert {
+  display: block;
+  padding: 15px;
+  background-color: #4caf50;
+  color: white;
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  border-radius: 5px;
+}
+
+.alert-error {
+  background-color: var(--red-color);
+  display: block;
+  padding: 15px;
+  color: white;
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  border-radius: 5px;
+}
+
 .contact-area .contact-content .contact-form .input-group textarea {
   height: 140px;
   border-bottom: 1px solid #555555;
