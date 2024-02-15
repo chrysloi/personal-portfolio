@@ -45,5 +45,11 @@ const loadarticles = () => {
 };
 
 window.addEventListener("DOMContentLoaded", () => {
+  const currentMode = localStorage.getItem("light-theme");
+
   loadarticles();
+  if (currentMode === "light") {
+    console.log(currentMode);
+    document.documentElement.classList.toggle("light-theme");
+  }
 });

@@ -22,6 +22,10 @@
   z-index: 99;
 }
 
+.login-container .icon svg path {
+  fill: var(--main-color);
+}
+
 p.title {
   color: var(--teritiary);
   font-size: 40px;

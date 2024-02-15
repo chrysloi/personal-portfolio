@@ -38,6 +38,8 @@ type Article = {
 
 const articles = localStorage.getItem("articles");
 const articlesArray: Article[] = articles ? JSON.parse(articles) : [];
+const projects = localStorage.getItem("projects");
+const projectsArray: Project[] = projects ? JSON.parse(projects) : [];
 
 const mainContainer = document.querySelector("main") as HTMLElement;
 const changeView = async (changeTo: ObjKey) => {
@@ -158,6 +160,65 @@ const viewArticle = async (title: string) => {
       <br />
       <br />
       <p class="details">${article.content}</p>
+    <div>`;
+  }
+};
+
+/* View Project */
+const viewProject = async (name: string) => {
+  const project = projectsArray.filter((item) => item.name === name)[0];
+  const projectView = await (await fetch(pages["viewDetails"])).text();
+  mainContainer.innerHTML = projectView;
+  const contentArea = document.querySelector(
+    "section#viewDetails .dashboard-content"
+  );
+  if (contentArea) {
+    contentArea.innerHTML = `
+      <div class="dashboard-content-header view-header">
+      <div class="dashboard-content-header-title">
+        <a onclick="goBack()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30px"
+            height="30px"
+            viewBox="0 0 30 30"
+          >
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="m15 5l-6 7l6 7"
+            />
+          </svg>
+        </a>
+        <h1>View Article</h1>
+      </div>
+      <div class="btn-group">
+        <div class="login-btn">
+          <a onclick="editArticle('${project.name}')" class="theme-btn edit">Edit</a>
+        </div>
+        <div class="login-btn">
+          <a onClick="deleteArticle('${project.name}')" class="theme-btn delete">Delete</a>
+        </div>
+      </div>
+    </div>
+    <div class="blog-content">
+      <p class="title">${project.name}</p>
+      <div class="author-date">
+        <img
+          style="width: 45px; height: 45px; border-radius: 25px"
+          src="../assets/images/1642048213572.jpg"
+        />
+      </div>
+      <img
+        style="width: 100%; height: auto"
+        src="${project.coverImage}"
+      />
+      <br />
+      <br />
+      <p class="details">${project.description}</p>
     <div>`;
   }
 };
@@ -415,9 +476,6 @@ const newProject = async () => {
 
 /* Loading all saved data and display them to the dasboard */
 const loadSaved = async () => {
-  const projects = localStorage.getItem("projects");
-
-  const projectsArray: Project[] = projects ? JSON.parse(projects) : [];
   const articlesList = document.querySelector(
     "section#articles .dashboard-content .dashboard-content-body .contents"
   );
@@ -455,7 +513,7 @@ const loadSaved = async () => {
     projectsList.innerHTML = "";
     projectsArray.forEach((project) => {
       projectsList.innerHTML += `
-        <div class="card" onclick="viewArticle()">
+        <a class="card" onclick="viewProject('${project.name})">
             <img
               src="${project.coverImage}"
               alt=""
@@ -468,7 +526,7 @@ const loadSaved = async () => {
             <div class="card-description">
               ${project.description.split(" ").slice(0, 25).join(" ")}..
             </div>
-          </div>
+          </a>
         `;
     });
   }
@@ -497,7 +555,7 @@ const loadSaved = async () => {
     dashProjectsList.innerHTML = "";
     projectsArray.forEach((project) => {
       dashProjectsList.innerHTML += `
-        <div class="card" onclick="viewArticle()">
+        <a class="card" onclick="viewProject('${project.name})">
             <img
               src="${project.coverImage}"
               alt=""
@@ -510,7 +568,7 @@ const loadSaved = async () => {
             <div class="card-description">
               ${project.description.split(" ").slice(0, 25).join(" ")}...
             </div>
-          </div>
+          </a>
         `;
     });
   }
@@ -518,10 +576,24 @@ const loadSaved = async () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   loadSaved();
+  const loggedInUser = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user") as string)
+    : "";
+  const currentMode = localStorage.getItem("light-theme");
+  if (currentMode === "light") {
+    console.log(currentMode);
+    document.documentElement.classList.toggle("light-theme");
+  }
+  // if (
+  //   loggedInUser.length === 0 ||
+  //   loggedInUser !== "eloi.chrysanthe@gmail.com"
+  // ) {
+  //   window.location.href = "./index.html";
+  // }
   // if (window.location.hash.substring(1) === "articles") loadArticles();
-  if (window.location.hash) {
+  if (window.location.hash && loggedInUser) {
     changeDashboardView(window.location.hash.substring(1) as ObjKey);
-  } else {
+  } else if (loggedInUser) {
     changeDashboardView("dashboard");
   }
 });
