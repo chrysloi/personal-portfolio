@@ -128,7 +128,6 @@
               fill="#909090"
             />
           </svg>
-          <!-- <img src="./assets/icons/home.svg" alt="home" /> -->
         </a>
       </li>
       <li>
@@ -155,7 +154,6 @@
               stroke-linejoin="round"
             />
           </svg>
-          <!-- <img src="./assets//icons/about.svg" alt="About" /> -->
         </a>
       </li>
       <li>
@@ -173,7 +171,6 @@
               fill="#909090"
             />
           </svg>
-          <!-- <img src="./assets/icons/resume.svg" alt="Resume" /> -->
         </a>
       </li>
       <li>
@@ -212,7 +209,6 @@
               stroke-linecap="round"
             />
           </svg>
-          <!-- <img src="./assets/icons/skills.svg" alt="Skills" /> -->
         </a>
       </li>
       <li>
@@ -280,7 +276,6 @@
               stroke-linecap="round"
             />
           </svg>
-          <!-- <img src="./assets/icons/portfolio.svg" alt="Portfolio" /> -->
         </a>
       </li>
       <li>
@@ -311,7 +306,6 @@
               stroke-linejoin="round"
             />
           </svg>
-          <!-- <img src="./assets/icons/testimonial.svg" alt="Testimonial" /> -->
         </a>
       </li>
       <li>
@@ -335,11 +329,10 @@
               stroke-linecap="round"
             />
           </svg>
-          <!-- <img src="./assets/icons/contact.svg" alt="Contact" /> -->
         </a>
       </li>
       <li>
-        <a href="/pages/blog.html" class="scroll-to">
+        <a href="./pages/blog.html" class="scroll-to">
           <span>Blog</span>
           <svg
             width="20"
@@ -1075,7 +1068,6 @@
                       stroke-linecap="round"
                     />
                   </svg>
-                  <!-- <i class="las la-envelope"></i> -->
                   contact
                 </h4>
                 <h2 class="scroll-animation" data-animation="fade_from_bottom">
@@ -1117,29 +1109,23 @@
                       value=""
                     />
                   </div>
-                  <div
-                    class="alert alert-success messenger-box-contact__msg"
-                    style="display: none"
-                    role="alert"
-                  >
-                    <p>Your message was sent successfully.</p>
-                  </div>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="input-group">
                         <p>
-                          <label for="full-name"> full Name<sup>*</sup> </label>
-                          <span class="" data-name="full-name">
+                          <label for="fullName">Full Name<sup>*</sup> </label>
+                          <span class="fullName" data-name="fullName">
                             <input
                               size="40"
                               class="input-group"
-                              id="full-name"
+                              id="fullName"
                               aria-required="true"
                               aria-invalid="false"
                               placeholder="Your Full Name"
                               value=""
                               type="text"
-                              name="full-name"
+                              name="fullName"
+                              required
                             />
                           </span>
                         </p>
@@ -1150,10 +1136,11 @@
                         <p>
                           <label for="email">Email<sup>*</sup> </label>
                           <span
-                            class="wpcf7-form-control-wrap"
+                            class="wpcf7-form-control-wrap email"
                             data-name="email"
                           >
                             <input
+                              id="email"
                               size="40"
                               class="input-group"
                               aria-required="true"
@@ -1162,15 +1149,16 @@
                               value=""
                               type="email"
                               name="email"
+                              required
                             />
                           </span>
                         </p>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                       <div class="input-group">
                         <p>
-                          <label for="phone-number">
+                          <label for="phoneNumber">
                             phone <span>(optional)</span>
                           </label>
                           <span
@@ -1178,6 +1166,7 @@
                             data-name="phone"
                           >
                             <input
+                              id="phoneNumber"
                               class="input-group"
                               aria-invalid="false"
                               placeholder="Your number phone"
@@ -1188,13 +1177,13 @@
                           </span>
                         </p>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-6">
                       <div class="input-group">
                         <p>
                           <label for="subject">Subject<sup>*</sup></label>
                           <span
-                            class="wpcf7-form-control-wrap"
+                            class="wpcf7-form-control-wrap subject"
                             data-name="subject"
                           >
                             <input
@@ -1207,6 +1196,7 @@
                               value=""
                               type="text"
                               name="subject"
+                              required
                             />
                           </span>
                         </p>
@@ -1217,7 +1207,7 @@
                         <p>
                           <label for="message">message<sup>*</sup></label>
                           <span
-                            class="wpcf7-form-control-wrap"
+                            class="wpcf7-form-control-wrap message"
                             data-name="message"
                           >
                             <textarea
@@ -1228,13 +1218,16 @@
                               aria-invalid="false"
                               placeholder="Write your message here ..."
                               name="message"
+                              required
                             ></textarea>
                           </span>
                         </p>
                       </div>
                     </div>
                     <div class="send-message">
-                      <a href="" class="theme-btn">Send message</a>
+                      <a onclick="sendMessage()" class="theme-btn"
+                        >Send message</a
+                      >
                     </div>
                   </div>
                   <div class="wpcf7-response-output" aria-hidden="true"></div>
@@ -1246,5 +1239,5 @@
       </div>
     </main>
   </body>
-  <script src="./js/main.js" defer></script>
+  <script src="./compiledjs/main.js" defer></script>
 </html>

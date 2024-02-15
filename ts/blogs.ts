@@ -1,14 +1,21 @@
+type BlogArticle = {
+  title: string;
+  coverImage: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
 const loadarticles = () => {
   console.log(">>>>>>>>>>>>>>>>");
   const articles = localStorage.getItem("articles");
   console.log(articles);
-  if (articles) {
-    const articlesArray = JSON.parse(articles);
-    const articlesList = document.querySelector(".blog-content");
+  const articlesArray: BlogArticle[] = articles ? JSON.parse(articles) : [];
+  const articlesList = document.querySelector(".blog-content") as HTMLElement;
+  if (articlesArray.length > 0 && articlesList) {
     console.log(articlesList);
     articlesList.innerHTML = "";
     articlesArray.forEach((article) => {
-      console.log(">>>>>>>>>>>>>>>>");
       articlesList.innerHTML += `
       <a href="./viewBlog.html" class="blog-card">
       <div class="blog-card-left">
@@ -16,16 +23,20 @@ const loadarticles = () => {
           ${article.title}
         </div>
         <div class="blog-card-description">
-          ${article.content}
+          ${article.content.split(" ").slice(0, 30).join(" ")}...
         </div>
         <div class="blog-card-footer">
-          <div class="blog-card-date">Jan 17, 2024</div>
+          <div class="blog-card-date">${
+            article.createdAt
+              ? new Date(article.createdAt).toDateString()
+              : new Date().toDateString()
+          }</div>
           <p class="blog-card-topic">React</p>
         </div>
       </div>
       <img
         style="width: 250px; height: 200px; border-radius: 5px"
-        src="../assets/images/thumbnail.svg"
+        src="${article.coverImage}"
       />
     </a>
         `;
@@ -34,5 +45,11 @@ const loadarticles = () => {
 };
 
 window.addEventListener("DOMContentLoaded", () => {
+  const currentMode = localStorage.getItem("light-theme");
+
   loadarticles();
+  if (currentMode === "light") {
+    console.log(currentMode);
+    document.documentElement.classList.toggle("light-theme");
+  }
 });

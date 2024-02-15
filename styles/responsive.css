@@ -79,3 +79,15 @@
     top: 20px !important;
   }
 }
+
+@media (max-width: 768px) {
+  .dashboard-content-body div.contents {
+    grid-template-columns: 30% 30% 30% !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .dashboard-content-body div.contents {
+    grid-template-columns: 70% !important;
+  }
+}

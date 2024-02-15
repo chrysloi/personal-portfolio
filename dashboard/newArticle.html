@@ -8,20 +8,10 @@
         <div class="login-btn">
           <a onclick="newArticle()" class="theme-btn add">Publish</a>
         </div>
-        <!-- <div class="login-btn">
-        <a href="" class="theme-btn delete">Delete</a>
-      </div> -->
       </div>
     </div>
     <div class="blog-content">
       <form method="post">
-        <div
-          class="alert alert-success messenger-box-contact__msg"
-          style="display: none"
-          role="alert"
-        >
-          <p>Your message was sent successfully.</p>
-        </div>
         <div class="row">
           <div class="col-md-6">
             <div class="input-group">
@@ -53,7 +43,8 @@
                     class="input-group"
                     aria-required="true"
                     aria-invalid="false"
-                    type="file"
+                    placeholder="Image url"
+                    type="url"
                     name="coverImage"
                   />
                 </span>
