@@ -1,3 +1,5 @@
+// import { url } from "inspector";
+
 const iconMenu: HTMLElement | null = document.querySelector(".icon-menu");
 const overLay: HTMLElement | null = document.querySelector(
   ".responsive-sidebar-menu .overlay"
@@ -35,6 +37,7 @@ const lightThemeBtn = `
         stroke-linejoin="round"
       />
     </svg>`;
+// const landingPageUrl = "https://api.eloichrysanthe.me/api";
 
 iconMenu?.addEventListener("click", function () {
   document.querySelector(".responsive-sidebar-menu")?.classList.add("active");
@@ -127,7 +130,8 @@ const errorReturn = (data: { container: string; message: string }) => {
   }, 3000);
 };
 
-const sendMessage = () => {
+// Send message
+const sendMessage = async () => {
   const fullName = document.querySelector(
     "#contact #fullName"
   ) as HTMLInputElement;
@@ -138,78 +142,88 @@ const sendMessage = () => {
   const message = document.querySelector(
     "#contact #message"
   ) as HTMLInputElement;
+  let error = false;
+  const sendMessageBtn = document.querySelector("#contact .theme-btn");
 
-  const messages = localStorage.getItem("message");
-  const messagesArray: message[] = messages ? JSON.parse(messages) : [];
+  if (sendMessageBtn) {
+    sendMessageBtn.innerHTML = "";
+    sendMessageBtn.innerHTML += `<div class="ring"></div>`;
+  }
+
   if (fullName.value === "") {
     errorReturn({
       container: "#contact .fullName",
       message: "Fullname is required",
     });
-    return;
+    error = true;
   }
   if (email.value === "") {
     errorReturn({
       container: "#contact .email",
       message: "Email is required",
     });
+    error = true;
   }
   if (subject.value === "") {
     errorReturn({
       container: "#contact .subject",
       message: "Subject is required",
     });
+    error = true;
   }
   if (message.value === "") {
     errorReturn({
       container: "#contact .message",
       message: "Message is required",
     });
+    error = true;
   }
+  if (error && sendMessageBtn) {
+    sendMessageBtn.innerHTML = "Send message";
+    return;
+  }
+  const newMessage: message = {
+    fullName: fullName.value,
+    email: email.value,
+    subject: subject.value,
+    message: message.value,
+  };
+  const resp = await fetch(`${url}/message/send`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newMessage),
+  });
+  const result = JSON.parse(await resp.text());
 
-  if (
-    messagesArray.length > 0 &&
-    message.value !== "" &&
-    subject.value !== "" &&
-    fullName.value !== "" &&
-    email.value !== ""
-  ) {
-    const newMessage: message = {
-      fullName: fullName.value,
-      email: email.value,
-      subject: subject.value,
-      message: message.value,
-    };
-    messagesArray.push(newMessage);
-    localStorage.setItem("message", JSON.stringify(messagesArray));
-
+  if (result.status !== 201 && sendMessageBtn) {
+    sendMessageBtn.innerHTML = "Send message";
     const alertDiv = document.createElement("div");
-    alertDiv.classList.add("alert");
-    alertDiv.textContent = "Success! Message sent successfully.";
+    alertDiv.classList.add("alert-error");
+    alertDiv.textContent = result.error
+      ? result.error[0]
+      : "An error occured try again";
     document.body.appendChild(alertDiv);
-
     setTimeout(() => {
-      email.value = "";
-      subject.value = "";
-      fullName.value = "";
-      message.value = "";
       alertDiv.style.display = "none";
     }, 3000);
-  } else {
-    const newMessage: message = {
-      fullName: fullName.value,
-      email: email.value,
-      subject: subject.value,
-      message: message.value,
-    };
-    messagesArray.push(newMessage);
-    localStorage.setItem("message", JSON.stringify(messagesArray));
+  } else if (result.status === 201 && sendMessageBtn) {
+    // console.log(result.token);
+    sendMessageBtn.innerHTML = "Send message";
+    const alertDiv = document.createElement("div");
+    alertDiv.classList.add("alert");
+    alertDiv.textContent = result.message
+      ? result.message
+      : "Successfully sent message";
+    document.body.appendChild(alertDiv);
+    email.value = "";
+    subject.value = "";
+    fullName.value = "";
+    message.value = "";
     setTimeout(() => {
-      email.value = "";
-      subject.value = "";
-      fullName.value = "";
-      message.value = "";
-    }, 500);
+      alertDiv.style.display = "none";
+    }, 3000);
   }
 };
 

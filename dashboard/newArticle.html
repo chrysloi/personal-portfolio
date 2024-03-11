@@ -44,7 +44,7 @@
                     aria-required="true"
                     aria-invalid="false"
                     placeholder="Image url"
-                    type="url"
+                    type="file"
                     name="coverImage"
                   />
                 </span>
@@ -54,7 +54,31 @@
           <div class="col-md-6">
             <div class="input-group">
               <p>
-                <label for="article">Article<sup>*</sup> </label>
+                <label for="article">Summarised Article<sup>*</sup> </label>
+                <span class="wpcf7-form-control-wrap" data-name="article">
+                  <div id="editor-container">
+                    <!-- <div id="toolbar">
+                      <button onclick="formatText('bold')">Bold</button>
+                      <button onclick="formatText('italic')">Italic</button>
+                      <button onclick="formatText('underline')">
+                        Underline
+                      </button>
+                      <button onclick="alignText('left')">Align Left</button>
+                      <button onclick="alignText('center')">
+                        Align Center
+                      </button>
+                      <button onclick="alignText('right')">Align Right</button>
+                    </div> -->
+                    <div id="summaryEditor" contenteditable="true"></div>
+                  </div>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <p>
+                <label for="article">Detailed Article<sup>*</sup> </label>
                 <span class="wpcf7-form-control-wrap" data-name="article">
                   <div id="editor-container">
                     <!-- <div id="toolbar">

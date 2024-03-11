@@ -1,4 +1,14 @@
 "use strict";
+// import { url } from "inspector";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 const iconMenu = document.querySelector(".icon-menu");
 const overLay = document.querySelector(".responsive-sidebar-menu .overlay");
 const root = document.documentElement;
@@ -33,15 +43,17 @@ const lightThemeBtn = `
         stroke-linejoin="round"
       />
     </svg>`;
-iconMenu?.addEventListener("click", function () {
-    document.querySelector(".responsive-sidebar-menu")?.classList.add("active");
+// const landingPageUrl = "https://api.eloichrysanthe.me/api";
+iconMenu === null || iconMenu === void 0 ? void 0 : iconMenu.addEventListener("click", function () {
+    var _a;
+    (_a = document.querySelector(".responsive-sidebar-menu")) === null || _a === void 0 ? void 0 : _a.classList.add("active");
 });
-overLay?.addEventListener("click", function () {
-    document
-        .querySelector(".responsive-sidebar-menu")
-        ?.classList.remove("active");
+overLay === null || overLay === void 0 ? void 0 : overLay.addEventListener("click", function () {
+    var _a;
+    (_a = document
+        .querySelector(".responsive-sidebar-menu")) === null || _a === void 0 ? void 0 : _a.classList.remove("active");
 });
-themeSwitch?.addEventListener("click", () => {
+themeSwitch === null || themeSwitch === void 0 ? void 0 : themeSwitch.addEventListener("click", () => {
     root.classList.toggle("light-theme");
     if (root.classList.contains("light-theme")) {
         localStorage.setItem("light-theme", "light");
@@ -53,12 +65,12 @@ themeSwitch?.addEventListener("click", () => {
     }
 });
 const changeTo = (sectionId) => {
+    var _a;
     const section = document.getElementById(sectionId);
     if (section) {
         section.scrollIntoView({ behavior: "smooth" });
-        document
-            .querySelector(".responsive-sidebar-menu")
-            ?.classList.remove("active");
+        (_a = document
+            .querySelector(".responsive-sidebar-menu")) === null || _a === void 0 ? void 0 : _a.classList.remove("active");
     }
 };
 const getActiveSection = () => {
@@ -79,9 +91,9 @@ const updateActiveButton = () => {
     if (currentSection) {
         const navLinks = document.querySelectorAll(".dmenu li a");
         navLinks.forEach((link) => {
-            const sectionId = link
-                .getAttribute("href")
-                ?.substring(1);
+            var _a;
+            const sectionId = (_a = link
+                .getAttribute("href")) === null || _a === void 0 ? void 0 : _a.substring(1);
             if (sectionId === currentSection) {
                 link.classList.add("active");
             }
@@ -103,80 +115,94 @@ const errorReturn = (data) => {
         errorDiv.style.display = "none";
     }, 3000);
 };
-const sendMessage = () => {
+// Send message
+const sendMessage = () => __awaiter(void 0, void 0, void 0, function* () {
     const fullName = document.querySelector("#contact #fullName");
     const email = document.querySelector("#contact #email");
     const subject = document.querySelector("#contact #subject");
     const message = document.querySelector("#contact #message");
-    const messages = localStorage.getItem("message");
-    const messagesArray = messages ? JSON.parse(messages) : [];
+    let error = false;
+    const sendMessageBtn = document.querySelector("#contact .theme-btn");
+    if (sendMessageBtn) {
+        sendMessageBtn.innerHTML = "";
+        sendMessageBtn.innerHTML += `<div class="ring"></div>`;
+    }
     if (fullName.value === "") {
         errorReturn({
             container: "#contact .fullName",
             message: "Fullname is required",
         });
-        return;
+        error = true;
     }
     if (email.value === "") {
         errorReturn({
             container: "#contact .email",
             message: "Email is required",
         });
+        error = true;
     }
     if (subject.value === "") {
         errorReturn({
             container: "#contact .subject",
             message: "Subject is required",
         });
+        error = true;
     }
     if (message.value === "") {
         errorReturn({
             container: "#contact .message",
             message: "Message is required",
         });
+        error = true;
     }
-    if (messagesArray.length > 0 &&
-        message.value !== "" &&
-        subject.value !== "" &&
-        fullName.value !== "" &&
-        email.value !== "") {
-        const newMessage = {
-            fullName: fullName.value,
-            email: email.value,
-            subject: subject.value,
-            message: message.value,
-        };
-        messagesArray.push(newMessage);
-        localStorage.setItem("message", JSON.stringify(messagesArray));
+    if (error && sendMessageBtn) {
+        sendMessageBtn.innerHTML = "Send message";
+        return;
+    }
+    const newMessage = {
+        fullName: fullName.value,
+        email: email.value,
+        subject: subject.value,
+        message: message.value,
+    };
+    const resp = yield fetch(`${url}/message/send`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newMessage),
+    });
+    const result = JSON.parse(yield resp.text());
+    if (result.status !== 201 && sendMessageBtn) {
+        sendMessageBtn.innerHTML = "Send message";
         const alertDiv = document.createElement("div");
-        alertDiv.classList.add("alert");
-        alertDiv.textContent = "Success! Message sent successfully.";
+        alertDiv.classList.add("alert-error");
+        alertDiv.textContent = result.error
+            ? result.error[0]
+            : "An error occured try again";
         document.body.appendChild(alertDiv);
         setTimeout(() => {
-            email.value = "";
-            subject.value = "";
-            fullName.value = "";
-            message.value = "";
             alertDiv.style.display = "none";
         }, 3000);
     }
-    else {
-        const newMessage = {
-            fullName: fullName.value,
-            email: email.value,
-            subject: subject.value,
-            message: message.value,
-        };
-        messagesArray.push(newMessage);
-        localStorage.setItem("message", JSON.stringify(messagesArray));
+    else if (result.status === 201 && sendMessageBtn) {
+        // console.log(result.token);
+        sendMessageBtn.innerHTML = "Send message";
+        const alertDiv = document.createElement("div");
+        alertDiv.classList.add("alert");
+        alertDiv.textContent = result.message
+            ? result.message
+            : "Successfully sent message";
+        document.body.appendChild(alertDiv);
+        email.value = "";
+        subject.value = "";
+        fullName.value = "";
+        message.value = "";
         setTimeout(() => {
-            email.value = "";
-            subject.value = "";
-            fullName.value = "";
-            message.value = "";
-        }, 500);
+            alertDiv.style.display = "none";
+        }, 3000);
     }
-};
+});
 document.addEventListener("scroll", updateActiveButton); // Event listener for scroll
 window.addEventListener("DOMContentLoaded", () => {
     updateActiveButton();
