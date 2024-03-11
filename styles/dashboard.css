@@ -261,7 +261,8 @@
   flex-direction: column;
   height: 100%;
 }
-#editor {
+#editor,
+#summaryEditor {
   width: 100%;
   min-height: 300px;
   flex-grow: 1;
@@ -271,6 +272,9 @@
   white-space: pre-wrap;
   overflow-wrap: break-word;
   border-radius: 10px;
+}
+#summaryEditor {
+  min-height: 150px;
 }
 #toolbar {
   display: flex;

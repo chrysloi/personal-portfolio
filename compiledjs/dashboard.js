@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 const pages = {
     // dashboard: "dashboard.html",
     // articles: "articles.html",
@@ -14,10 +23,10 @@ const articlesArray = articles ? JSON.parse(articles) : [];
 const projects = localStorage.getItem("projects");
 const projectsArray = projects ? JSON.parse(projects) : [];
 const mainContainer = document.querySelector("main");
-const changeView = async (changeTo) => {
+const changeView = (changeTo) => __awaiter(void 0, void 0, void 0, function* () {
     if (pages[changeTo] && mainContainer) {
-        const res = await fetch(pages[changeTo]);
-        const content = await res.text();
+        const res = yield fetch(pages[changeTo]);
+        const content = yield res.text();
         // const navLinks = document.querySelectorAll(".dashboard-menu li a");
         // console.log({ content });
         // navLinks.forEach((link) => {
@@ -33,10 +42,10 @@ const changeView = async (changeTo) => {
         // console.log(contentArea);
         // console.log(mainContainer);
     }
-};
-const goBack = async () => {
+});
+const goBack = () => __awaiter(void 0, void 0, void 0, function* () {
     window.location.reload();
-};
+});
 const changeDashboardView = (changeTo) => {
     const changeToSection = document.getElementById(changeTo);
     if (changeToSection) {
@@ -51,7 +60,8 @@ const changeDashboardView = (changeTo) => {
             }
         });
         navLinks.forEach((link) => {
-            const sectionId = link.getAttribute("href")?.substring(1);
+            var _a;
+            const sectionId = (_a = link.getAttribute("href")) === null || _a === void 0 ? void 0 : _a.substring(1);
             if (sectionId === changeTo) {
                 link.classList.add("active");
             }
@@ -64,9 +74,19 @@ const changeDashboardView = (changeTo) => {
     }
 };
 /* View article */
-const viewArticle = async (title) => {
-    const article = articlesArray.filter((item) => item.title === title)[0];
-    const articleView = await (await fetch(pages["viewDetails"])).text();
+const viewArticle = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const token = localStorage.getItem("token")
+        ? JSON.parse(localStorage.getItem("token"))
+        : "";
+    const resp = yield fetch(`${url}/blog/one/${id}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+        },
+    });
+    const article = JSON.parse(yield resp.text()).article;
+    const articleView = yield (yield fetch(pages["viewDetails"])).text();
     mainContainer.innerHTML = articleView;
     const contentArea = document.querySelector("section#viewDetails .dashboard-content");
     if (contentArea) {
@@ -94,10 +114,17 @@ const viewArticle = async (title) => {
       </div>
       <div class="btn-group">
         <div class="login-btn">
-          <a onclick="editArticle('${article.title}')" class="theme-btn edit">Edit</a>
+          <a onclick="editArticle('${article._id}')" class="theme-btn edit">Edit</a>
         </div>
+        ${article.is_published
+            ? `<div class="login-btn">
+          <a onclick="unpublishArticle('${article._id}')" class="theme-btn edit">Unpublish</a>
+        </div>`
+            : `<div class="login-btn">
+        <a onclick="publishArticle('${article._id}')" class="theme-btn edit">Publish</a>
+      </div>`}
         <div class="login-btn">
-          <a onClick="deleteArticle('${article.title}')" class="theme-btn delete">Delete</a>
+          <a onClick="deleteArticle('${article._id}')" class="theme-btn delete">Delete</a>
         </div>
       </div>
     </div>
@@ -109,9 +136,9 @@ const viewArticle = async (title) => {
           src="../assets/images/1642048213572.jpg"
         />
         <div class="date">
-          <p>Eloi Chrysanthe<br /><span>${article.createdAt
-            ? new Date(article.createdAt).toDateString()
-            : new Date().toDateString()}</span></p>
+          <p>${article.author.name}<br /><span>${article.is_published
+            ? `Published: ${new Date(article.createdAt).toDateString()}`
+            : `Created: ${article.createdAt && new Date(article.createdAt).toDateString()}`}</span></p>
         </div>
       </div>
       <img
@@ -120,14 +147,14 @@ const viewArticle = async (title) => {
       />
       <br />
       <br />
-      <p class="details">${article.content}</p>
+      <p class="details">${article.detailed}</p>
     <div>`;
     }
-};
+});
 /* View Project */
-const viewProject = async (name) => {
+const viewProject = (name) => __awaiter(void 0, void 0, void 0, function* () {
     const project = projectsArray.filter((item) => item.name === name)[0];
-    const projectView = await (await fetch(pages["viewDetails"])).text();
+    const projectView = yield (yield fetch(pages["viewDetails"])).text();
     mainContainer.innerHTML = projectView;
     const contentArea = document.querySelector("section#viewDetails .dashboard-content");
     if (contentArea) {
@@ -179,13 +206,101 @@ const viewProject = async (name) => {
       <p class="details">${project.description}</p>
     <div>`;
     }
-};
+});
 /* Deleting an article */
-const deleteArticle = (title) => {
-    const restArticles = articlesArray.filter((item) => item.title !== title);
-    localStorage.setItem("articles", JSON.stringify(restArticles));
-    window.location.reload();
-};
+const deleteArticle = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const token = localStorage.getItem("token")
+        ? JSON.parse(localStorage.getItem("token"))
+        : "";
+    const resp = yield fetch(`${url}/blog/one/${id}/delete`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const result = JSON.parse(yield resp.text());
+    console.log(result);
+    const alertDiv = document.createElement("div");
+    if (resp.status !== 204) {
+        alertDiv.classList.add("alert-error");
+        alertDiv.textContent = resp.statusText
+            ? `status ${resp.status} - ${resp.statusText}`
+            : `status ${resp.status} - An error occured try again`;
+        document.body.appendChild(alertDiv);
+        setTimeout(() => {
+            alertDiv.style.display = "none";
+        }, 3000);
+    }
+    else if (resp.status === 204) {
+        alertDiv.classList.add("alert");
+        alertDiv.textContent = "Article deleted succcessfully";
+        window.location.reload();
+        alertDiv.style.display = "none";
+        // setTimeout(() => {
+        // }, 3000);
+    }
+});
+const publishArticle = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const token = localStorage.getItem("token")
+        ? JSON.parse(localStorage.getItem("token"))
+        : "";
+    const resp = yield fetch(`${url}/blog/one/${id}/publish`, {
+        method: "PATCH",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const result = JSON.parse(yield resp.text());
+    console.log(result);
+    const alertDiv = document.createElement("div");
+    if (result.status !== 200) {
+        alertDiv.classList.add("alert-error");
+        alertDiv.textContent = result.error
+            ? `status ${result.status} - ${result.error[0]}`
+            : `status ${result.status} - An error occured try again`;
+        document.body.appendChild(alertDiv);
+        setTimeout(() => {
+            alertDiv.style.display = "none";
+        }, 3000);
+    }
+    else if (result.status === 200) {
+        alertDiv.classList.add("alert");
+        window.location.reload();
+        alertDiv.style.display = "none";
+    }
+});
+const unpublishArticle = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const token = localStorage.getItem("token")
+        ? JSON.parse(localStorage.getItem("token"))
+        : "";
+    const resp = yield fetch(`${url}/blog/one/${id}/unpublish`, {
+        method: "PATCH",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const result = JSON.parse(yield resp.text());
+    console.log(result);
+    const alertDiv = document.createElement("div");
+    if (result.status !== 200) {
+        alertDiv.classList.add("alert-error");
+        alertDiv.textContent = result.error
+            ? `status ${result.status} - ${result.error[0]}`
+            : `status ${result.status} - An error occured try again`;
+        document.body.appendChild(alertDiv);
+        setTimeout(() => {
+            alertDiv.style.display = "none";
+        }, 3000);
+    }
+    else if (result.status === 200) {
+        alertDiv.classList.add("alert");
+        window.location.reload();
+        alertDiv.style.display = "none";
+    }
+    // const restArticles = articlesArray.filter((item) => item.title !== title);
+    // localStorage.setItem("articles", JSON.stringify(restArticles));
+    // window.location.reload();
+});
 /* update article */
 const updateArticle = (title) => {
     const articleIndex = articlesArray.findIndex((obj) => obj.title === title);
@@ -213,9 +328,9 @@ const updateArticle = (title) => {
     }, 3000);
 };
 /* Go to edit screen */
-const editArticle = async (title) => {
+const editArticle = (title) => __awaiter(void 0, void 0, void 0, function* () {
     const article = articlesArray.filter((item) => item.title === title)[0];
-    const articleView = await (await fetch(pages["edit"])).text();
+    const articleView = yield (yield fetch(pages["edit"])).text();
     mainContainer.innerHTML = articleView;
     const contentArea = document.querySelector("section#editContent .dashboard-content");
     if (contentArea) {
@@ -318,57 +433,54 @@ const editArticle = async (title) => {
         </form>
       </div>`;
     }
-};
+});
 /* Creating a new project */
-const newArticle = async () => {
+const newArticle = () => __awaiter(void 0, void 0, void 0, function* () {
     const title = document.querySelector("form #title");
     const coverImage = document.querySelector("form #coverImage");
     const content = document.querySelector("form #editor");
-    if (articles) {
-        articlesArray.push({
-            title: title?.value,
-            coverImage: coverImage.value,
-            content: content.innerHTML,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-        });
-        localStorage.setItem("articles", JSON.stringify(articlesArray));
-        const alertDiv = document.createElement("div");
-        alertDiv.classList.add("alert");
-        alertDiv.textContent = "Success! Article published successfully";
+    const summary = document.querySelector("form #summaryEditor");
+    const newArticle = new FormData();
+    newArticle.append("title", title === null || title === void 0 ? void 0 : title.value);
+    (coverImage === null || coverImage === void 0 ? void 0 : coverImage.files) && newArticle.append("articleImage", coverImage === null || coverImage === void 0 ? void 0 : coverImage.files[0]);
+    newArticle.append("detailed", content === null || content === void 0 ? void 0 : content.innerHTML);
+    newArticle.append("summary", summary === null || summary === void 0 ? void 0 : summary.innerHTML);
+    const token = localStorage.getItem("token")
+        ? JSON.parse(localStorage.getItem("token"))
+        : "";
+    console.log(token);
+    const resp = yield fetch(`${url}/blog/create`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        body: newArticle,
+    });
+    const result = JSON.parse(yield resp.text());
+    console.log(result);
+    const alertDiv = document.createElement("div");
+    if (result.status !== 201) {
+        // loginButton.innerHTML = "Login";
+        alertDiv.classList.add("alert-error");
+        alertDiv.textContent = result.error
+            ? result.error[0]
+            : "An error occured try again";
         document.body.appendChild(alertDiv);
         setTimeout(() => {
-            title.value = "";
-            coverImage.value = "";
-            content.innerHTML = "";
-            window.location.reload();
             alertDiv.style.display = "none";
         }, 3000);
     }
-    else {
-        articlesArray.push({
-            title: title?.value,
-            coverImage: coverImage.value,
-            content: content.innerHTML,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-        });
-        localStorage.setItem("articles", JSON.stringify(articlesArray));
-        const alertDiv = document.createElement("div");
+    else if (result.status === 201) {
         alertDiv.classList.add("alert");
-        alertDiv.textContent = "Success! Article published successfully";
-        document.body.appendChild(alertDiv);
-        setTimeout(() => {
-            title.value = "";
-            coverImage.value = "";
-            content.innerHTML = "";
-            window.location.reload();
-            alertDiv.style.display = "none";
-        }, 3000);
+        title.value = "";
+        coverImage.value = "";
+        content.innerHTML = "";
+        window.location.reload();
+        alertDiv.style.display = "none";
     }
-};
+});
 /* Creating a new project */
-const newProject = async () => {
+const newProject = () => __awaiter(void 0, void 0, void 0, function* () {
     const name = document.querySelector("form #name");
     const coverImage = document.querySelector("form #coverImage");
     const description = document.querySelector("form #editor");
@@ -413,29 +525,40 @@ const newProject = async () => {
             alertDiv.style.display = "none";
         }, 500);
     }
-};
+});
 /* Loading all saved data and display them to the dasboard */
-const loadSaved = async () => {
+const loadSaved = () => __awaiter(void 0, void 0, void 0, function* () {
+    const token = localStorage.getItem("token")
+        ? JSON.parse(localStorage.getItem("token"))
+        : "";
+    const resp = yield fetch(`${url}/blog/user/all`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+        },
+    });
+    const articles = JSON.parse(yield resp.text()).articles;
     const articlesList = document.querySelector("section#articles .dashboard-content .dashboard-content-body .contents");
     const dashArticlesList = document.querySelector("section#dashboard .dashboard-content #articles .contents");
     const projectsList = document.querySelector("section#projects .dashboard-content .dashboard-content-body .contents");
     const dashProjectsList = document.querySelector("section#dashboard .dashboard-content #projects .contents");
-    if (articlesList && articlesArray) {
+    if (articlesList && articles) {
+        console.log(articles);
         articlesList.innerHTML = "";
-        articlesArray.forEach((article) => {
+        articles.forEach((article) => {
             articlesList.innerHTML += `
-        <a class="card" onclick="viewArticle('${article.title}')">
+        <a class="card" onclick="viewArticle('${article._id}')">
         <img
-          src="${article.coverImage}"
+          src="${article.coverImage
+                ? article.coverImage
+                : "https://repository-images.githubusercontent.com/329723227/62ff9135-2763-4fba-ae7f-0b1eefa0ea56"}"
           alt="${article.title}"
           class="card-image"
         />
-        <div class="card-title">${article.title
-                .split(" ")
-                .slice(0, 3)
-                .join(" ")}</div>
+        <div class="card-title">${article.title && article.title.split(" ").slice(0, 3).join(" ")}</div>
         <div class="card-description">
-          ${article.content.split(" ").slice(0, 25).join(" ")}...
+          ${article.detailed.split(" ").slice(0, 25).join(" ")}...
         </div>
       </a>
           `;
@@ -462,22 +585,21 @@ const loadSaved = async () => {
         `;
         });
     }
-    if (dashArticlesList && articlesArray) {
+    if (dashArticlesList && articles) {
         dashArticlesList.innerHTML = "";
-        articlesArray.forEach((article) => {
+        articles.forEach((article) => {
             dashArticlesList.innerHTML += `
-        <a class="card" onclick="viewArticle('${article.title}')">
+        <a class="card" onclick="viewArticle('${article._id}')">
         <img
-          src="${article.coverImage}"
-          alt=""
+          src="${article.coverImage
+                ? article.coverImage
+                : "https://repository-images.githubusercontent.com/329723227/62ff9135-2763-4fba-ae7f-0b1eefa0ea56"}"
+          alt="${article.title}"
           class="card-image"
         />
-        <div class="card-title">${article.title
-                .split(" ")
-                .slice(0, 3)
-                .join(" ")}</div>
+        <div class="card-title">${article.title && article.title.split(" ").slice(0, 3).join(" ")}</div>
         <div class="card-description">
-          ${article.content.split(" ").slice(0, 25).join(" ")}...
+          ${article.detailed.split(" ").slice(0, 25).join(" ")}...
         </div>
       </a>
           `;
@@ -504,23 +626,22 @@ const loadSaved = async () => {
         `;
         });
     }
-};
+});
 window.addEventListener("DOMContentLoaded", () => {
     loadSaved();
-    const loggedInUser = localStorage.getItem("user")
-        ? JSON.parse(localStorage.getItem("user"))
+    const loggedInUser = localStorage.getItem("token")
+        ? JSON.parse(localStorage.getItem("token"))
         : "";
+    // console.log(loggedInUser.length === 0, "<<<<<<<<<");
     const currentMode = localStorage.getItem("light-theme");
     if (currentMode === "light") {
         console.log(currentMode);
         document.documentElement.classList.toggle("light-theme");
     }
-    // if (
-    //   loggedInUser.length === 0 ||
-    //   loggedInUser !== "eloi.chrysanthe@gmail.com"
-    // ) {
-    //   window.location.href = "./index.html";
-    // }
+    if (loggedInUser === "") {
+        console.log(true);
+        window.location.href = "/login.html";
+    }
     // if (window.location.hash.substring(1) === "articles") loadArticles();
     if (window.location.hash && loggedInUser) {
         changeDashboardView(window.location.hash.substring(1));

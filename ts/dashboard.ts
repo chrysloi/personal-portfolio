@@ -95,8 +95,18 @@ const changeDashboardView = (changeTo: string) => {
 };
 
 /* View article */
-const viewArticle = async (title: string) => {
-  const article = articlesArray.filter((item) => item.title === title)[0];
+const viewArticle = async (id: string) => {
+  const token = localStorage.getItem("token")
+    ? JSON.parse(localStorage.getItem("token") as string)
+    : "";
+  const resp = await fetch(`${url}/blog/one/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  });
+  const article = JSON.parse(await resp.text()).article;
   const articleView = await (await fetch(pages["viewDetails"])).text();
   mainContainer.innerHTML = articleView;
   const contentArea = document.querySelector(
@@ -128,12 +138,21 @@ const viewArticle = async (title: string) => {
       <div class="btn-group">
         <div class="login-btn">
           <a onclick="editArticle('${
-            article.title
+            article._id
           }')" class="theme-btn edit">Edit</a>
         </div>
+        ${
+          article.is_published
+            ? `<div class="login-btn">
+          <a onclick="unpublishArticle('${article._id}')" class="theme-btn edit">Unpublish</a>
+        </div>`
+            : `<div class="login-btn">
+        <a onclick="publishArticle('${article._id}')" class="theme-btn edit">Publish</a>
+      </div>`
+        }
         <div class="login-btn">
           <a onClick="deleteArticle('${
-            article.title
+            article._id
           }')" class="theme-btn delete">Delete</a>
         </div>
       </div>
@@ -146,11 +165,13 @@ const viewArticle = async (title: string) => {
           src="../assets/images/1642048213572.jpg"
         />
         <div class="date">
-          <p>Eloi Chrysanthe<br /><span>${
-            article.createdAt
-              ? new Date(article.createdAt).toDateString()
-              : new Date().toDateString()
-          }</span></p>
+          <p>${article.author.name}<br /><span>${
+      article.is_published
+        ? `Published: ${new Date(article.createdAt).toDateString()}`
+        : `Created: ${
+            article.createdAt && new Date(article.createdAt).toDateString()
+          }`
+    }</span></p>
         </div>
       </div>
       <img
@@ -159,7 +180,7 @@ const viewArticle = async (title: string) => {
       />
       <br />
       <br />
-      <p class="details">${article.content}</p>
+      <p class="details">${article.detailed}</p>
     <div>`;
   }
 };
@@ -224,10 +245,103 @@ const viewProject = async (name: string) => {
 };
 
 /* Deleting an article */
-const deleteArticle = (title: string) => {
-  const restArticles = articlesArray.filter((item) => item.title !== title);
-  localStorage.setItem("articles", JSON.stringify(restArticles));
-  window.location.reload();
+const deleteArticle = async (id: string) => {
+  const token = localStorage.getItem("token")
+    ? JSON.parse(localStorage.getItem("token") as string)
+    : "";
+
+  const resp = await fetch(`${url}/blog/one/${id}/delete`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const result = JSON.parse(await resp.text());
+  console.log(result);
+
+  const alertDiv = document.createElement("div");
+  if (resp.status !== 204) {
+    alertDiv.classList.add("alert-error");
+    alertDiv.textContent = resp.statusText
+      ? `status ${resp.status} - ${resp.statusText}`
+      : `status ${resp.status} - An error occured try again`;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => {
+      alertDiv.style.display = "none";
+    }, 3000);
+  } else if (resp.status === 204) {
+    alertDiv.classList.add("alert");
+    alertDiv.textContent = "Article deleted succcessfully";
+    window.location.reload();
+    alertDiv.style.display = "none";
+    // setTimeout(() => {
+    // }, 3000);
+  }
+};
+
+const publishArticle = async (id: string) => {
+  const token = localStorage.getItem("token")
+    ? JSON.parse(localStorage.getItem("token") as string)
+    : "";
+
+  const resp = await fetch(`${url}/blog/one/${id}/publish`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const result = JSON.parse(await resp.text());
+  console.log(result);
+
+  const alertDiv = document.createElement("div");
+  if (result.status !== 200) {
+    alertDiv.classList.add("alert-error");
+    alertDiv.textContent = result.error
+      ? `status ${result.status} - ${result.error[0]}`
+      : `status ${result.status} - An error occured try again`;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => {
+      alertDiv.style.display = "none";
+    }, 3000);
+  } else if (result.status === 200) {
+    alertDiv.classList.add("alert");
+    window.location.reload();
+    alertDiv.style.display = "none";
+  }
+};
+
+const unpublishArticle = async (id: string) => {
+  const token = localStorage.getItem("token")
+    ? JSON.parse(localStorage.getItem("token") as string)
+    : "";
+
+  const resp = await fetch(`${url}/blog/one/${id}/unpublish`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const result = JSON.parse(await resp.text());
+  console.log(result);
+
+  const alertDiv = document.createElement("div");
+  if (result.status !== 200) {
+    alertDiv.classList.add("alert-error");
+    alertDiv.textContent = result.error
+      ? `status ${result.status} - ${result.error[0]}`
+      : `status ${result.status} - An error occured try again`;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => {
+      alertDiv.style.display = "none";
+    }, 3000);
+  } else if (result.status === 200) {
+    alertDiv.classList.add("alert");
+    window.location.reload();
+    alertDiv.style.display = "none";
+  }
+  // const restArticles = articlesArray.filter((item) => item.title !== title);
+  // localStorage.setItem("articles", JSON.stringify(restArticles));
+  // window.location.reload();
 };
 
 /* update article */
@@ -378,47 +492,46 @@ const newArticle = async () => {
     "form #coverImage"
   ) as HTMLInputElement;
   const content = document.querySelector("form #editor") as HTMLElement;
+  const summary = document.querySelector("form #summaryEditor") as HTMLElement;
+  const newArticle = new FormData();
+  newArticle.append("title", title?.value);
+  coverImage?.files && newArticle.append("articleImage", coverImage?.files[0]);
+  newArticle.append("detailed", content?.innerHTML);
+  newArticle.append("summary", summary?.innerHTML);
 
-  if (articles) {
-    articlesArray.push({
-      title: title?.value,
-      coverImage: coverImage.value,
-      content: content.innerHTML,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    });
-    localStorage.setItem("articles", JSON.stringify(articlesArray));
-    const alertDiv = document.createElement("div");
-    alertDiv.classList.add("alert");
-    alertDiv.textContent = "Success! Article published successfully";
+  const token = localStorage.getItem("token")
+    ? JSON.parse(localStorage.getItem("token") as string)
+    : "";
+
+  console.log(token);
+  const resp = await fetch(`${url}/blog/create`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: newArticle,
+  });
+  const result = JSON.parse(await resp.text());
+  console.log(result);
+
+  const alertDiv = document.createElement("div");
+  if (result.status !== 201) {
+    // loginButton.innerHTML = "Login";
+    alertDiv.classList.add("alert-error");
+    alertDiv.textContent = result.error
+      ? result.error[0]
+      : "An error occured try again";
     document.body.appendChild(alertDiv);
     setTimeout(() => {
-      title.value = "";
-      coverImage.value = "";
-      content.innerHTML = "";
-      window.location.reload();
       alertDiv.style.display = "none";
     }, 3000);
-  } else {
-    articlesArray.push({
-      title: title?.value,
-      coverImage: coverImage.value,
-      content: content.innerHTML,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    });
-    localStorage.setItem("articles", JSON.stringify(articlesArray));
-    const alertDiv = document.createElement("div");
+  } else if (result.status === 201) {
     alertDiv.classList.add("alert");
-    alertDiv.textContent = "Success! Article published successfully";
-    document.body.appendChild(alertDiv);
-    setTimeout(() => {
-      title.value = "";
-      coverImage.value = "";
-      content.innerHTML = "";
-      window.location.reload();
-      alertDiv.style.display = "none";
-    }, 3000);
+    title.value = "";
+    coverImage.value = "";
+    content.innerHTML = "";
+    window.location.reload();
+    alertDiv.style.display = "none";
   }
 };
 
@@ -476,6 +589,18 @@ const newProject = async () => {
 
 /* Loading all saved data and display them to the dasboard */
 const loadSaved = async () => {
+  const token = localStorage.getItem("token")
+    ? JSON.parse(localStorage.getItem("token") as string)
+    : "";
+  const resp = await fetch(`${url}/blog/user/all`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  });
+  const articles = JSON.parse(await resp.text()).articles;
+
   const articlesList = document.querySelector(
     "section#articles .dashboard-content .dashboard-content-body .contents"
   );
@@ -488,22 +613,26 @@ const loadSaved = async () => {
   const dashProjectsList = document.querySelector(
     "section#dashboard .dashboard-content #projects .contents"
   );
-  if (articlesList && articlesArray) {
+  if (articlesList && articles) {
+    console.log(articles);
     articlesList.innerHTML = "";
-    articlesArray.forEach((article) => {
+    articles.forEach((article: any) => {
       articlesList.innerHTML += `
-        <a class="card" onclick="viewArticle('${article.title}')">
+        <a class="card" onclick="viewArticle('${article._id}')">
         <img
-          src="${article.coverImage}"
+          src="${
+            article.coverImage
+              ? article.coverImage
+              : "https://repository-images.githubusercontent.com/329723227/62ff9135-2763-4fba-ae7f-0b1eefa0ea56"
+          }"
           alt="${article.title}"
           class="card-image"
         />
-        <div class="card-title">${article.title
-          .split(" ")
-          .slice(0, 3)
-          .join(" ")}</div>
+        <div class="card-title">${
+          article.title && article.title.split(" ").slice(0, 3).join(" ")
+        }</div>
         <div class="card-description">
-          ${article.content.split(" ").slice(0, 25).join(" ")}...
+          ${article.detailed.split(" ").slice(0, 25).join(" ")}...
         </div>
       </a>
           `;
@@ -530,22 +659,25 @@ const loadSaved = async () => {
         `;
     });
   }
-  if (dashArticlesList && articlesArray) {
+  if (dashArticlesList && articles) {
     dashArticlesList.innerHTML = "";
-    articlesArray.forEach((article) => {
+    articles.forEach((article: any) => {
       dashArticlesList.innerHTML += `
-        <a class="card" onclick="viewArticle('${article.title}')">
+        <a class="card" onclick="viewArticle('${article._id}')">
         <img
-          src="${article.coverImage}"
-          alt=""
+          src="${
+            article.coverImage
+              ? article.coverImage
+              : "https://repository-images.githubusercontent.com/329723227/62ff9135-2763-4fba-ae7f-0b1eefa0ea56"
+          }"
+          alt="${article.title}"
           class="card-image"
         />
-        <div class="card-title">${article.title
-          .split(" ")
-          .slice(0, 3)
-          .join(" ")}</div>
+        <div class="card-title">${
+          article.title && article.title.split(" ").slice(0, 3).join(" ")
+        }</div>
         <div class="card-description">
-          ${article.content.split(" ").slice(0, 25).join(" ")}...
+          ${article.detailed.split(" ").slice(0, 25).join(" ")}...
         </div>
       </a>
           `;
@@ -576,20 +708,19 @@ const loadSaved = async () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   loadSaved();
-  const loggedInUser = localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user") as string)
+  const loggedInUser = localStorage.getItem("token")
+    ? JSON.parse(localStorage.getItem("token") as string)
     : "";
+  // console.log(loggedInUser.length === 0, "<<<<<<<<<");
   const currentMode = localStorage.getItem("light-theme");
   if (currentMode === "light") {
     console.log(currentMode);
     document.documentElement.classList.toggle("light-theme");
   }
-  // if (
-  //   loggedInUser.length === 0 ||
-  //   loggedInUser !== "eloi.chrysanthe@gmail.com"
-  // ) {
-  //   window.location.href = "./index.html";
-  // }
+  if (loggedInUser === "") {
+    console.log(true);
+    window.location.href = "/login.html";
+  }
   // if (window.location.hash.substring(1) === "articles") loadArticles();
   if (window.location.hash && loggedInUser) {
     changeDashboardView(window.location.hash.substring(1) as ObjKey);
